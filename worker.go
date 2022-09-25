@@ -195,8 +195,9 @@ func (w *Worker) Run(ctx context.Context) {
 	t0 := time.Now()
 	for i := 0; i < w.NumberOfMessages; i++ {
 		text := w.PayloadGenerator(i)
-		token := publisher.Publish(topicName, w.PublisherQoS, w.Retained, text)
+		token := publisher.Publish(topicName, 1, w.Retained, text)
 		publishedCount++
+		fmt.Print("hi")
 		token.Wait()
 		time.Sleep(w.PauseBetweenMessages)
 	}

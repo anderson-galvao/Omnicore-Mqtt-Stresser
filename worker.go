@@ -177,7 +177,7 @@ func (w *Worker) Run(ctx context.Context) {
 
 	publisher := mqtt.NewClient(publisherOptions)
 	verboseLogger.Printf("[%d] connecting publisher\n", w.WorkerId)
-	if token := publisher.Connect(); token.WaitTimeout(w.Timeout) || token.Error() != nil {
+	if token := publisher.Connect(); token.WaitTimeout(w.Timeout) && token.Error() != nil {
 		resultChan <- Result{
 			WorkerId:     w.WorkerId,
 			Event:        ConnectFailedEvent,
@@ -186,6 +186,7 @@ func (w *Worker) Run(ctx context.Context) {
 		}
 		return
 	}
+
 	verboseLogger.Printf("[%d] starting control loop %s\n", w.WorkerId, topicName)
 
 	receivedCount := 0

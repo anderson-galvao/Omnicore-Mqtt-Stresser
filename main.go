@@ -21,8 +21,8 @@ var (
 	stopWaitLoop = false
 	randomSource = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	subscriberClientIdTemplate = "tenants/KoreWireless/locations/us-central1/registries/KoreWireless/devices/Router%d"
-	publisherClientIdTemplate  = "tenants/KoreWireless/locations/us-central1/registries/KoreWireless/devices/StateManager%d"
+	subscriberClientIdTemplate = "tenants/KoreWireless/locations/us-central1/registries/KoreWireless/devices/StateManager%d"
+	publisherClientIdTemplate  = "tenants/KoreWireless/locations/us-central1/registries/KoreWireless/devices/Stresser%d"
 	topicNameTemplate          = "tenants/KoreWireless/registries/KoreWireless/devices/StateManager%d/events"
 
 	errorLogger   = log.New(os.Stderr, "ERROR: ", log.Lmicroseconds|log.Ltime|log.Lshortfile)

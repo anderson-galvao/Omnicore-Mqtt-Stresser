@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
-	Stresser "github.com/RacoWireless/iot-gw-stresser/implementation/service"
-	"github.com/RacoWireless/iot-gw-stresser/implementation/utils"
-	"github.com/RacoWireless/iot-gw-stresser/model"
+	Stresser "github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/service"
+	"github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/utils"
+	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"

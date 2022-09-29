@@ -1,4 +1,4 @@
-module github.com/RacoWireless/iot-gw-stresser
+module github.com/RacoWireless/iot-gw-mqtt-stresser
 
 go 1.19
 

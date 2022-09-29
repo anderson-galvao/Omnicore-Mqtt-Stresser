@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.metadata.name }}
+  labels:
+   app: {{ .Values.metadata.app }}
+  namespace: {{ .Values.metadata.namespace }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: {{ .Values.metadata.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.metadata.app }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: ENV_AUTH_SERVER
+          value: ":8091"
+        - name: ENV_DEBUG
+          value: "true"
+        - name: ENV_POSTGRES_CS
+          value: "user=postgres dbname=iot-core-dev password=iot-core-dev host=34.81.43.98 sslmode=disable"
+        
+

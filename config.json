@@ -1,0 +1,5 @@
+{
+  "debug": "true",
+  "ENV_AUTH_SERVER": ":8091",
+  "CONTEXT.TIMEOUT": 2
+}

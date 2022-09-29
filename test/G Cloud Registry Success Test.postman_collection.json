@@ -1,0 +1,1751 @@
+{
+	"info": {
+		"_postman_id": "c109a9e5-bf5e-4fe0-9a55-c75bc5a00f0f",
+		"name": "G Cloud Registry Success Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14242713"
+	},
+	"item": [
+		{
+			"name": "Create Registry 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"postman.setNextRequest(\"Get Registry 1\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"registryName\": \"test11\",\r\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test11\",\r\n    \"mqttConfig\": {\r\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\": {\r\n        \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\": \"INFO\",\r\n    \"stateNotificationConfig\": {\r\n        \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\": [\r\n        {\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\r\n        }\r\n    ],\r\n    \"Credentials\": [\r\n        \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Registry",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:21:16 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Get Registry 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"postman.setNextRequest(\"Add Registry Cert 1\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test11",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test11"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Registry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:18:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1\",\n    \"project\": \"my-iot-356305\",\n    \"region\": \"asia-east1\",\n    \"id\": \"test123\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test123\",\n    \"eventNotificationConfigs\": [\n        {\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\n        }\n    ],\n    \"stateNotificationConfig\": {},\n    \"mqttConfig\": {\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\n    },\n    \"httpConfig\": {\n        \"httpEnabledState\": \"HTTP_ENABLED\"\n    },\n    \"logLevel\": \"INFO\",\n    \"credentials\": [\n        {\n            \"publicKeyCertificate\": {\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\",\n                \"format\": \"X509_CERTIFICATE_PEM\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Registry Cert 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"postman.setNextRequest(\"Get Registry 1 Copy\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"credentials\": \r\n        {\r\n            \"publicKeyCertificate\": {\r\n                \"format\": \"X509_CERTIFICATE_PEM\",\r\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDLDCCAhSgAwIBAgITMNZHEBss/CrpIrK9eX8aMQtGNDANBgkqhkiG9w0BAQsF\\nADAeMQ0wCwYDVQQKEwRrb3JlMQ0wCwYDVQQDEwRrb3JlMB4XDTIyMDgwNDEwMzIw\\nOVoXDTMyMDgwMTEwMzIwOFowHjENMAsGA1UEChMEa29yZTENMAsGA1UEAxMEa29y\\nZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL69ASS6Fz8EXBI1yPqm\\nKASYIpyOVZN5VcMnV1spqn7uLtVHVnyeLuQon+aHTqb59TjafP+d7az8hyByL2Zm\\n98juwo9vCnT4rKceskZM55olnfF07dbd+DpIT/3hbDh2RlU+rSRYwYoXZ3DOF7jd\\nLsEJN9tFpExInAk5GK0ZaPXiZzCY+a9hjg+6RSPPqBhoTWuI6zPrPYeWSTKHvqNG\\ngWiytwriss3hBp34Gdg4sO8COD+0uf9/Ia0hB/tpcr0Myyshgzw/SqCDK4mWVqNs\\nLcsBeqZkPwNvbC3ZFvUI8NJMpeAyghW25qvswyQZWxIsvJgMI9SmSXgYCBf0DyFV\\nGH8CAwEAAaNjMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYD\\nVR0OBBYEFMo7tLXQIKicZWBlmWLs1UByKb8DMB8GA1UdIwQYMBaAFMo7tLXQIKic\\nZWBlmWLs1UByKb8DMA0GCSqGSIb3DQEBCwUAA4IBAQCS7aFBnvAZ66HEC5ssutgC\\nJ0Ak0Li7x8YThz0+AqWyU42/8woitwuxmyQOYP4g9CJty6bqM1LoKc3bOvb1GOMm\\nZ0xhAe/+H3ZIKs6g5zXon7mZOEpGJSZQLMuyPI5searFIp+3mgIo4UpgcjYFrBTE\\nYJezh93GxirAFVUQ2ZcOltvt13LiavjATlSNNwhSNKZ7lUzD2Y9d5VBkPIYBZw4U\\neeJ4GnDPg3IX62rJWWpJ/unJQcmxTwjY8CT85P8C0oROjqCJc93dm8aNXpw7afVq\\n+0R+VZwrzkHCmfJEV6ogrR0fUQODUWSvLmR8Z956s/OijpSqRmr88mzq1UZtbnwA\\n-----END CERTIFICATE-----\\n\"\r\n            }\r\n        }\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test11/certificate",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test11",
+						"certificate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Registry Cert",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"credentials\": \r\n        {\r\n            \"publicKeyCertificate\": {\r\n                \"format\": \"X509_CERTIFICATE_PEM\",\r\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nIIDLDCCAhSgAwIBAgITMNZHEBss/CrpIrK9eX8aMQtGNDANBgkqhkiG9w0BAQsF\\nADAeMQ0wCwYDVQQKEwRrb3JlMQ0wCwYDVQQDEwRrb3JlMB4XDTIyMDgwNDEwMzIw\\nOVoXDTMyMDgwMTEwMzIwOFowHjENMAsGA1UEChMEa29yZTENMAsGA1UEAxMEa29y\\nZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL69ASS6Fz8EXBI1yPqm\\nKASYIpyOVZN5VcMnV1spqn7uLtVHVnyeLuQon+aHTqb59TjafP+d7az8hyByL2Zm\\n98juwo9vCnT4rKceskZM55olnfF07dbd+DpIT/3hbDh2RlU+rSRYwYoXZ3DOF7jd\\nLsEJN9tFpExInAk5GK0ZaPXiZzCY+a9hjg+6RSPPqBhoTWuI6zPrPYeWSTKHvqNG\\ngWiytwriss3hBp34Gdg4sO8COD+0uf9/Ia0hB/tpcr0Myyshgzw/SqCDK4mWVqNs\\nLcsBeqZkPwNvbC3ZFvUI8NJMpeAyghW25qvswyQZWxIsvJgMI9SmSXgYCBf0DyFV\\nGH8CAwEAAaNjMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYD\\nVR0OBBYEFMo7tLXQIKicZWBlmWLs1UByKb8DMB8GA1UdIwQYMBaAFMo7tLXQIKic\\nZWBlmWLs1UByKb8DMA0GCSqGSIb3DQEBCwUAA4IBAQCS7aFBnvAZ66HEC5ssutgC\\nJ0Ak0Li7x8YThz0+AqWyU42/8woitwuxmyQOYP4g9CJty6bqM1LoKc3bOvb1GOMm\\nZ0xhAe/+H3ZIKs6g5zXon7mZOEpGJSZQLMuyPI5searFIp+3mgIo4UpgcjYFrBTE\\nYJezh93GxirAFVUQ2ZcOltvt13LiavjATlSNNwhSNKZ7lUzD2Y9d5VBkPIYBZw4U\\neeJ4GnDPg3IX62rJWWpJ/unJQcmxTwjY8CT85P8C0oROjqCJc93dm8aNXpw7afVq\\n+0R+VZwrzkHCmfJEV6ogrR0fUQODUWSvLmR8Z956s/OijpSqRmr88mzq1UZtbnwA\\n-----END CERTIFICATE-----\\n\"\r\n            }\r\n        }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{baseurl}}/registry/projects/{{project}}/locations/asia-east1/registries/test123/certificate",
+							"protocol": "http",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"registry",
+								"projects",
+								"{{project}}",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123",
+								"certificate"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 Aug 2022 06:30:41 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"stateCode\": 0,\n    \"message\": \"Success\",\n    \"details\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Registry 1 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Added Registry Certificate\", function () {\r",
+							"    if(pm.response.json().details.credentials.length>0){\r",
+							"        return true\r",
+							"    }\r",
+							"    else{\r",
+							"        return false\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"postman.setNextRequest(\"Remove Registry Cert\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test11",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test11"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Registry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:18:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1\",\n    \"project\": \"my-iot-356305\",\n    \"region\": \"asia-east1\",\n    \"id\": \"test123\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test123\",\n    \"eventNotificationConfigs\": [\n        {\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\n        }\n    ],\n    \"stateNotificationConfig\": {},\n    \"mqttConfig\": {\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\n    },\n    \"httpConfig\": {\n        \"httpEnabledState\": \"HTTP_ENABLED\"\n    },\n    \"logLevel\": \"INFO\",\n    \"credentials\": [\n        {\n            \"publicKeyCertificate\": {\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\",\n                \"format\": \"X509_CERTIFICATE_PEM\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove Registry Cert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"postman.setNextRequest(\"Get Registry 1 Copy 2\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ids\":[\"1\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test11/certificate",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test11",
+						"certificate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Remove Registry Cert",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"credentials\": \r\n        {\r\n            \"publicKeyCertificate\": {\r\n                \"format\": \"X509_CERTIFICATE_PEM\",\r\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nIIDLDCCAhSgAwIBAgITMNZHEBss/CrpIrK9eX8aMQtGNDANBgkqhkiG9w0BAQsF\\nADAeMQ0wCwYDVQQKEwRrb3JlMQ0wCwYDVQQDEwRrb3JlMB4XDTIyMDgwNDEwMzIw\\nOVoXDTMyMDgwMTEwMzIwOFowHjENMAsGA1UEChMEa29yZTENMAsGA1UEAxMEa29y\\nZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL69ASS6Fz8EXBI1yPqm\\nKASYIpyOVZN5VcMnV1spqn7uLtVHVnyeLuQon+aHTqb59TjafP+d7az8hyByL2Zm\\n98juwo9vCnT4rKceskZM55olnfF07dbd+DpIT/3hbDh2RlU+rSRYwYoXZ3DOF7jd\\nLsEJN9tFpExInAk5GK0ZaPXiZzCY+a9hjg+6RSPPqBhoTWuI6zPrPYeWSTKHvqNG\\ngWiytwriss3hBp34Gdg4sO8COD+0uf9/Ia0hB/tpcr0Myyshgzw/SqCDK4mWVqNs\\nLcsBeqZkPwNvbC3ZFvUI8NJMpeAyghW25qvswyQZWxIsvJgMI9SmSXgYCBf0DyFV\\nGH8CAwEAAaNjMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYD\\nVR0OBBYEFMo7tLXQIKicZWBlmWLs1UByKb8DMB8GA1UdIwQYMBaAFMo7tLXQIKic\\nZWBlmWLs1UByKb8DMA0GCSqGSIb3DQEBCwUAA4IBAQCS7aFBnvAZ66HEC5ssutgC\\nJ0Ak0Li7x8YThz0+AqWyU42/8woitwuxmyQOYP4g9CJty6bqM1LoKc3bOvb1GOMm\\nZ0xhAe/+H3ZIKs6g5zXon7mZOEpGJSZQLMuyPI5searFIp+3mgIo4UpgcjYFrBTE\\nYJezh93GxirAFVUQ2ZcOltvt13LiavjATlSNNwhSNKZ7lUzD2Y9d5VBkPIYBZw4U\\neeJ4GnDPg3IX62rJWWpJ/unJQcmxTwjY8CT85P8C0oROjqCJc93dm8aNXpw7afVq\\n+0R+VZwrzkHCmfJEV6ogrR0fUQODUWSvLmR8Z956s/OijpSqRmr88mzq1UZtbnwA\\n-----END CERTIFICATE-----\\n\"\r\n            }\r\n        }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{baseurl}}/registry/projects/{{project}}/locations/asia-east1/registries/test123/certificate",
+							"protocol": "http",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"registry",
+								"projects",
+								"{{project}}",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123",
+								"certificate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 Aug 2022 06:30:55 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"stateCode\": 0,\n    \"message\": \"Success\",\n    \"details\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Registry 1 Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Removed Registry Certificate\", function () {\r",
+							"    if(pm.response.json().details.credentials==null){\r",
+							"        return true\r",
+							"    }\r",
+							"    else{\r",
+							"        return false\r",
+							"    }\r",
+							"});\r",
+							"postman.setNextRequest(\"Create Registry 2\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test11",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test11"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Registry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:18:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1\",\n    \"project\": \"my-iot-356305\",\n    \"region\": \"asia-east1\",\n    \"id\": \"test123\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test123\",\n    \"eventNotificationConfigs\": [\n        {\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\n        }\n    ],\n    \"stateNotificationConfig\": {},\n    \"mqttConfig\": {\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\n    },\n    \"httpConfig\": {\n        \"httpEnabledState\": \"HTTP_ENABLED\"\n    },\n    \"logLevel\": \"INFO\",\n    \"credentials\": [\n        {\n            \"publicKeyCertificate\": {\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\",\n                \"format\": \"X509_CERTIFICATE_PEM\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Registry 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"postman.setNextRequest(\"Modify Registry 2\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"registryName\": \"test44\",\r\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test44\",\r\n    \"mqttConfig\": {\r\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\": {\r\n        \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\": \"INFO\",\r\n    \"stateNotificationConfig\": {\r\n        \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\": [\r\n        {\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp4\"\r\n        }\r\n    ],\r\n    \"Credentials\": [\r\n        {\r\n            \"publicKeyCertificate\": {\r\n                \"format\": \"X509_CERTIFICATE_PEM\",\r\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDLDCCAhSgAwIBAgITMNZHEBss/CrpIrK9eX8aMQtGNDANBgkqhkiG9w0BAQsF\\nADAeMQ0wCwYDVQQKEwRrb3JlMQ0wCwYDVQQDEwRrb3JlMB4XDTIyMDgwNDEwMzIw\\nOVoXDTMyMDgwMTEwMzIwOFowHjENMAsGA1UEChMEa29yZTENMAsGA1UEAxMEa29y\\nZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL69ASS6Fz8EXBI1yPqm\\nKASYIpyOVZN5VcMnV1spqn7uLtVHVnyeLuQon+aHTqb59TjafP+d7az8hyByL2Zm\\n98juwo9vCnT4rKceskZM55olnfF07dbd+DpIT/3hbDh2RlU+rSRYwYoXZ3DOF7jd\\nLsEJN9tFpExInAk5GK0ZaPXiZzCY+a9hjg+6RSPPqBhoTWuI6zPrPYeWSTKHvqNG\\ngWiytwriss3hBp34Gdg4sO8COD+0uf9/Ia0hB/tpcr0Myyshgzw/SqCDK4mWVqNs\\nLcsBeqZkPwNvbC3ZFvUI8NJMpeAyghW25qvswyQZWxIsvJgMI9SmSXgYCBf0DyFV\\nGH8CAwEAAaNjMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYD\\nVR0OBBYEFMo7tLXQIKicZWBlmWLs1UByKb8DMB8GA1UdIwQYMBaAFMo7tLXQIKic\\nZWBlmWLs1UByKb8DMA0GCSqGSIb3DQEBCwUAA4IBAQCS7aFBnvAZ66HEC5ssutgC\\nJ0Ak0Li7x8YThz0+AqWyU42/8woitwuxmyQOYP4g9CJty6bqM1LoKc3bOvb1GOMm\\nZ0xhAe/+H3ZIKs6g5zXon7mZOEpGJSZQLMuyPI5searFIp+3mgIo4UpgcjYFrBTE\\nYJezh93GxirAFVUQ2ZcOltvt13LiavjATlSNNwhSNKZ7lUzD2Y9d5VBkPIYBZw4U\\neeJ4GnDPg3IX62rJWWpJ/unJQcmxTwjY8CT85P8C0oROjqCJc93dm8aNXpw7afVq\\n+0R+VZwrzkHCmfJEV6ogrR0fUQODUWSvLmR8Z956s/OijpSqRmr88mzq1UZtbnwA\\n-----END CERTIFICATE-----\\n\"\r\n            }\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Registry",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:21:16 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Modify Registry 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.collectionVariables.set(\"reg2ini\", request);\r",
+							"postman.setNextRequest(\"Modify Registry 2 Copy\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"registryName\":\"test44\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test44\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_DISABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp6\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp6\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test44?updateMask=event_notification_configs,state_notification_config,mqtt_config,http_config",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test44"
+					],
+					"query": [
+						{
+							"key": "updateMask",
+							"value": "event_notification_configs,state_notification_config,mqtt_config,http_config"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Modify Registry",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp123\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123?updateMask=event_notification_configs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							],
+							"query": [
+								{
+									"key": "updateMask",
+									"value": "event_notification_configs"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:24:31 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Modify Registry 2 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.collectionVariables.set(\"reg2ini\", request);\r",
+							"postman.setNextRequest(\"Get Registry 2\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"registryName\":\"test44\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test44\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_DISABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp6\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp6\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test44?updateMask=event_notification_configs,state_notification_config,mqtt_config,http_config",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test44"
+					],
+					"query": [
+						{
+							"key": "updateMask",
+							"value": "event_notification_configs,state_notification_config,mqtt_config,http_config"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Modify Registry",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp123\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123?updateMask=event_notification_configs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							],
+							"query": [
+								{
+									"key": "updateMask",
+									"value": "event_notification_configs"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:24:31 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Get Registry 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var reg2ini=pm.collectionVariables.get(\"reg2ini\");\r",
+							"\r",
+							"reg2ini =JSON.parse(reg2ini.data)\r",
+							"reg2fin =pm.response.json().details;\r",
+							"let status=_.isEqual(reg2ini.stateNotificationConfig,reg2fin.stateNotificationConfig)\r",
+							"status =status && _.isEqual(reg2ini.eventNotificationConfigs,reg2fin.eventNotificationConfigs)\r",
+							"status =status && _.isEqual(reg2ini.httpConfig,reg2fin.httpConfig)\r",
+							"status= status && _.isEqual(reg2ini.mqttConfig,reg2fin.mqttConfig)\r",
+							"pm.test(\"Updated Data\", function () {\r",
+							"    \r",
+							"    pm.expect(status).to.be.true;\r",
+							"});\r",
+							"postman.setNextRequest(\"Delete Registry 2\")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test44",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test44"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Registry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:18:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1\",\n    \"project\": \"my-iot-356305\",\n    \"region\": \"asia-east1\",\n    \"id\": \"test123\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test123\",\n    \"eventNotificationConfigs\": [\n        {\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\n        }\n    ],\n    \"stateNotificationConfig\": {},\n    \"mqttConfig\": {\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\n    },\n    \"httpConfig\": {\n        \"httpEnabledState\": \"HTTP_ENABLED\"\n    },\n    \"logLevel\": \"INFO\",\n    \"credentials\": [\n        {\n            \"publicKeyCertificate\": {\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\",\n                \"format\": \"X509_CERTIFICATE_PEM\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Registry 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"postman.setNextRequest(\"Get Registry 2 Failed\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"test44\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test44\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp123\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test44",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test44"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Registry",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp123\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:24:36 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Get Registry 2 Failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"postman.setNextRequest(\"Delete Registry 1\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test44",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test44"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Registry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:18:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1\",\n    \"project\": \"my-iot-356305\",\n    \"region\": \"asia-east1\",\n    \"id\": \"test123\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test123\",\n    \"eventNotificationConfigs\": [\n        {\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\n        }\n    ],\n    \"stateNotificationConfig\": {},\n    \"mqttConfig\": {\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\n    },\n    \"httpConfig\": {\n        \"httpEnabledState\": \"HTTP_ENABLED\"\n    },\n    \"logLevel\": \"INFO\",\n    \"credentials\": [\n        {\n            \"publicKeyCertificate\": {\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\",\n                \"format\": \"X509_CERTIFICATE_PEM\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Registry 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"postman.setNextRequest(\"Get Registry 1 Failed\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"test11\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test11\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp123\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test11",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test11"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Registry",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp123\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:24:36 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Get Registry 1 Failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"postman.setNextRequest(null)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test11",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test11"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Registry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:18:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1\",\n    \"project\": \"my-iot-356305\",\n    \"region\": \"asia-east1\",\n    \"id\": \"test123\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test123\",\n    \"eventNotificationConfigs\": [\n        {\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\n        }\n    ],\n    \"stateNotificationConfig\": {},\n    \"mqttConfig\": {\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\n    },\n    \"httpConfig\": {\n        \"httpEnabledState\": \"HTTP_ENABLED\"\n    },\n    \"logLevel\": \"INFO\",\n    \"credentials\": [\n        {\n            \"publicKeyCertificate\": {\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\",\n                \"format\": \"X509_CERTIFICATE_PEM\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Registry Cert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"credentials\": \r\n        {\r\n            \"publicKeyCertificate\": {\r\n                \"format\": \"X509_CERTIFICATE_PEM\",\r\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDLDCCAhSgAwIBAgITMNZHEBss/CrpIrK9eX8aMQtGNDANBgkqhkiG9w0BAQsF\\nADAeMQ0wCwYDVQQKEwRrb3JlMQ0wCwYDVQQDEwRrb3JlMB4XDTIyMDgwNDEwMzIw\\nOVoXDTMyMDgwMTEwMzIwOFowHjENMAsGA1UEChMEa29yZTENMAsGA1UEAxMEa29y\\nZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL69ASS6Fz8EXBI1yPqm\\nKASYIpyOVZN5VcMnV1spqn7uLtVHVnyeLuQon+aHTqb59TjafP+d7az8hyByL2Zm\\n98juwo9vCnT4rKceskZM55olnfF07dbd+DpIT/3hbDh2RlU+rSRYwYoXZ3DOF7jd\\nLsEJN9tFpExInAk5GK0ZaPXiZzCY+a9hjg+6RSPPqBhoTWuI6zPrPYeWSTKHvqNG\\ngWiytwriss3hBp34Gdg4sO8COD+0uf9/Ia0hB/tpcr0Myyshgzw/SqCDK4mWVqNs\\nLcsBeqZkPwNvbC3ZFvUI8NJMpeAyghW25qvswyQZWxIsvJgMI9SmSXgYCBf0DyFV\\nGH8CAwEAAaNjMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYD\\nVR0OBBYEFMo7tLXQIKicZWBlmWLs1UByKb8DMB8GA1UdIwQYMBaAFMo7tLXQIKic\\nZWBlmWLs1UByKb8DMA0GCSqGSIb3DQEBCwUAA4IBAQCS7aFBnvAZ66HEC5ssutgC\\nJ0Ak0Li7x8YThz0+AqWyU42/8woitwuxmyQOYP4g9CJty6bqM1LoKc3bOvb1GOMm\\nZ0xhAe/+H3ZIKs6g5zXon7mZOEpGJSZQLMuyPI5searFIp+3mgIo4UpgcjYFrBTE\\nYJezh93GxirAFVUQ2ZcOltvt13LiavjATlSNNwhSNKZ7lUzD2Y9d5VBkPIYBZw4U\\neeJ4GnDPg3IX62rJWWpJ/unJQcmxTwjY8CT85P8C0oROjqCJc93dm8aNXpw7afVq\\n+0R+VZwrzkHCmfJEV6ogrR0fUQODUWSvLmR8Z956s/OijpSqRmr88mzq1UZtbnwA\\n-----END CERTIFICATE-----\\n\"\r\n            }\r\n        }\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/registry/locations/asia-east1/registries/test123/certificate",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test123",
+						"certificate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Registry Cert",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"credentials\": \r\n        {\r\n            \"publicKeyCertificate\": {\r\n                \"format\": \"X509_CERTIFICATE_PEM\",\r\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nIIDLDCCAhSgAwIBAgITMNZHEBss/CrpIrK9eX8aMQtGNDANBgkqhkiG9w0BAQsF\\nADAeMQ0wCwYDVQQKEwRrb3JlMQ0wCwYDVQQDEwRrb3JlMB4XDTIyMDgwNDEwMzIw\\nOVoXDTMyMDgwMTEwMzIwOFowHjENMAsGA1UEChMEa29yZTENMAsGA1UEAxMEa29y\\nZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL69ASS6Fz8EXBI1yPqm\\nKASYIpyOVZN5VcMnV1spqn7uLtVHVnyeLuQon+aHTqb59TjafP+d7az8hyByL2Zm\\n98juwo9vCnT4rKceskZM55olnfF07dbd+DpIT/3hbDh2RlU+rSRYwYoXZ3DOF7jd\\nLsEJN9tFpExInAk5GK0ZaPXiZzCY+a9hjg+6RSPPqBhoTWuI6zPrPYeWSTKHvqNG\\ngWiytwriss3hBp34Gdg4sO8COD+0uf9/Ia0hB/tpcr0Myyshgzw/SqCDK4mWVqNs\\nLcsBeqZkPwNvbC3ZFvUI8NJMpeAyghW25qvswyQZWxIsvJgMI9SmSXgYCBf0DyFV\\nGH8CAwEAAaNjMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYD\\nVR0OBBYEFMo7tLXQIKicZWBlmWLs1UByKb8DMB8GA1UdIwQYMBaAFMo7tLXQIKic\\nZWBlmWLs1UByKb8DMA0GCSqGSIb3DQEBCwUAA4IBAQCS7aFBnvAZ66HEC5ssutgC\\nJ0Ak0Li7x8YThz0+AqWyU42/8woitwuxmyQOYP4g9CJty6bqM1LoKc3bOvb1GOMm\\nZ0xhAe/+H3ZIKs6g5zXon7mZOEpGJSZQLMuyPI5searFIp+3mgIo4UpgcjYFrBTE\\nYJezh93GxirAFVUQ2ZcOltvt13LiavjATlSNNwhSNKZ7lUzD2Y9d5VBkPIYBZw4U\\neeJ4GnDPg3IX62rJWWpJ/unJQcmxTwjY8CT85P8C0oROjqCJc93dm8aNXpw7afVq\\n+0R+VZwrzkHCmfJEV6ogrR0fUQODUWSvLmR8Z956s/OijpSqRmr88mzq1UZtbnwA\\n-----END CERTIFICATE-----\\n\"\r\n            }\r\n        }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{baseurl}}/registry/projects/{{project}}/locations/asia-east1/registries/test123/certificate",
+							"protocol": "http",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"registry",
+								"projects",
+								"{{project}}",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123",
+								"certificate"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 Aug 2022 06:30:41 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"stateCode\": 0,\n    \"message\": \"Success\",\n    \"details\": \"\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "cert",
+			"value": ""
+		},
+		{
+			"key": "registry1",
+			"value": ""
+		},
+		{
+			"key": "reg2ini",
+			"value": ""
+		},
+		{
+			"key": "reg2fin",
+			"value": ""
+		},
+		{
+			"key": "capresent",
+			"value": ""
+		}
+	]
+}

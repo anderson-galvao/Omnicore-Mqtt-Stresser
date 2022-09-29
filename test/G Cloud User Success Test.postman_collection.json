@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "2f623023-8610-44e6-a1fc-b0ed1e0d9684",
+		"name": "G Cloud User Success Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14242713"
+	},
+	"item": [
+		{
+			"name": "Add new User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"postman.setNextRequest(\"Update User\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tenantid\":\"korewireless-py5j0\",\r\n    \"email\":\"abc@test.com\",\r\n    \"uid\":\"userid2\",\r\n    \"provider\":\"gcp\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/users?actor=email@gmail.com",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "actor",
+							"value": "email@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"postman.setNextRequest(\"Delete User\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role\":\"Editor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/users/:uid?updateMask=role",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"users",
+						":uid"
+					],
+					"query": [
+						{
+							"key": "updateMask",
+							"value": "role"
+						}
+					],
+					"variable": [
+						{
+							"key": "uid",
+							"value": "userid2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkMjNmMzc0MDI1ZWQzNTNmOTg0YjUxMWE3Y2NlNDlhMzFkMzFiZDIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbXktaW90LTM1NjMwNSIsImF1ZCI6Im15LWlvdC0zNTYzMDUiLCJhdXRoX3RpbWUiOjE2NjMwNjYzMjksInVzZXJfaWQiOiI1NmpOcGdhd0VjZDdHcjQ0VlpGMTV2aWRoMjgyIiwic3ViIjoiNTZqTnBnYXdFY2Q3R3I0NFZaRjE1dmlkaDI4MiIsImlhdCI6MTY2MzA3NDgzOCwiZXhwIjoxNjYzMDc4NDM4LCJlbWFpbCI6InNoZWh6YWRpYnJhaGltQGtvcmV3aXJlbGVzcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsic2hlaHphZGlicmFoaW1Aa29yZXdpcmVsZXNzLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIiwidGVuYW50Ijoia29yZXdpcmVsZXNzLXB5NWowIn19.rnqHVbdmyBH159LALI4JWao0yP0KorWjC2S-AzuHo_2aZG_yX59mWF2txeJj5k3CwdwX1_62sV4CE-X9n-iKxew6_S7S7FRfNPm31W2yL5ov4q4PWZUMeQ2nNpwLjw7Y85swv4StW4qHDW4MvPX-FBr4Xo7bKMtvzRprt4yVoqeR1_FIlyOETrIwe3d9JGDxPuv88HngEhTtBX7vqAh2gaanrSLN6OJX66dAJgsYkCeN5v1naxEBgPVtu7CF9tLVdu9bqnx2_AASbi_KXBPf5j-VysDB4yrHQrEwGKu6saeklLz7zdNEowBPM_teNyI1FjCBioNt237RNSek2qz_UA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/users/:uid?tenantid=korewireless-py5j0&actor=email@gmail.com",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"users",
+						":uid"
+					],
+					"query": [
+						{
+							"key": "tenantid",
+							"value": "korewireless-py5j0"
+						},
+						{
+							"key": "actor",
+							"value": "email@gmail.com"
+						}
+					],
+					"variable": [
+						{
+							"key": "uid",
+							"value": "userid2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

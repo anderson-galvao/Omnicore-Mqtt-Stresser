@@ -1,0 +1,867 @@
+{
+	"info": {
+		"_postman_id": "e2816d87-3fbc-4f24-b344-5b40411153d9",
+		"name": "G Cloud Device Fail Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14242713"
+	},
+	"item": [
+		{
+			"name": "Create Registry",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"postman.setNextRequest(\"Get Registry\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseurl}}/registry/projects/{{project}}/locations/asia-east1/registries",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"projects",
+						"{{project}}",
+						"locations",
+						"asia-east1",
+						"registries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Registry",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:21:16 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Get Registry",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"postman.setNextRequest(\"Create Device\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/registry/projects/{{project}}/locations/asia-east1/registries/test1",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"projects",
+						"{{project}}",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Registry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:18:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1\",\n    \"project\": \"my-iot-356305\",\n    \"region\": \"asia-east1\",\n    \"id\": \"test123\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test123\",\n    \"eventNotificationConfigs\": [\n        {\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\n        }\n    ],\n    \"stateNotificationConfig\": {},\n    \"mqttConfig\": {\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\n    },\n    \"httpConfig\": {\n        \"httpEnabledState\": \"HTTP_ENABLED\"\n    },\n    \"logLevel\": \"INFO\",\n    \"credentials\": [\n        {\n            \"publicKeyCertificate\": {\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\",\n                \"format\": \"X509_CERTIFICATE_PEM\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Device",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"postman.setNextRequest(\"Create Device Copy\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"project/my-iot-356305/locations/asia-east1/registries/test1/devices/dev1\"\r\n   \r\n\t\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseurl}}/device/projects/{{project}}/locations/asia-east1/registries/test1/devices",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"device",
+						"projects",
+						"{{project}}",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test1",
+						"devices"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Device",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"dev1\",\r\n    \"name\":\"project/my-iot-356305/locations/asia-east1/registries/test-shaiz/devices/dev1\",\r\n    \"credentials\":[\r\n        {\r\n        \"expirationTime\": \"2023-10-02T15:01:23.045123456Z\",\r\n        \"publicKey\": {\r\n            \"format\": \"RSA_X509_PEM\",\r\n            \"key\": \"-----BEGIN CERTIFICATE-----\\nMIIDTjCCAjagAwIBAgIUT1pnW729WKi7u7WsOZi9uBbPfWIwDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM2NDBaFw0zMjA3\\nMTcwNjM2NDBaMF8xCzAJBgNVBAYTAkNOMREwDwYDVQQIDAhaaGVqaWFuZzERMA8G\\nA1UEBwwISGFuZ3pob3UxDTALBgNVBAoMBEVNUVgxGzAZBgNVBAMMElNlcnZlciBj\\nZXJ0aWZpY2F0ZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMCW4X3v\\nCvwIxGFHXaUTMyHGl9vKR4p2jv+UyWm6MOVzBB8JH8OO5nWVQr8GRGMtQQHmxcLm\\nfPS4YQ1KBBnyVAxrI9nqf9HWstKXTtZHCKUjFWUd5ewpM8RnByezU/P628l9FxtW\\nZEk3G5tDjxXdPtSRxbd38sX4WBkNftJKXGseGXIG4MszuqQdmfCLqehLRSXZy3SF\\nBS+qU1g/8n913cU8KD65Uq2dq1/cafxZ1y3WK30Gq15hyaKbaiZefuMhepF5sTWa\\nPs74++SfhjKNN/d7EVEhV3UpOCTUxrwu0+AmUA0EL+RjXVNX4bTiSh9bKZxz+HaG\\nC6IQNWlkZTLHawMCAwEAAaMcMBowGAYDVR0RBBEwD4cEAAAAAIIHMC4wLjAuMDAN\\nBgkqhkiG9w0BAQsFAAOCAQEAJfI/NR/tQHN0hXdFSsBQ66L9/WhX/AsVrZ4//Yrl\\njeJQ8BXuJP/z+0GmDTgGdFlVrgkB5SEx1nLrJXqF0032KpawxpNG8e9QD9rUP4ll\\nPg43YJi6XSsNJ9Oo/UU2/FpYMBLzxlKgXPvuu83PYFykpqxqxSCw5sy4XDwTq9qx\\nlUIXgasIwZgonyKQuK+QEejqM5aunGEOKye1rImouRmnOoH6taCyyjnF5faLY5Ux\\nMBluKqF5oi2rawSuzNi9ywFgB6EXKZE25zx3gjyFBY+dHgAxDrKrSgT6ZSt1aveN\\nc8PNT5d23RTkXNGFzIljLCs45Ts4vxuNYSIdJORCkcce1w==\\n-----END CERTIFICATE-----\"\r\n        }\r\n        }\r\n\r\n    ],\r\n    \"blocked\":false,\r\n    \"metadata\":{},\r\n    \"loglevel\":\"INFO\"\r\n\t\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/device/projects/my-iot-356305/locations/asia-east1/registries/test-shaiz/devices",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"device",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test-shaiz",
+								"devices"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:21:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Create Device Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"postman.setNextRequest(\"Create Device Copy 2\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"dev1\",\r\n    \"name\":\"project/my-iot-356305/locations/asia-east1/registries/test1/devices/dev1\"\r\n    \"credentials\":[\r\n        {\r\n        \"expirationTime\": \"2023-10-02T15:01:23.045123456Z\",\r\n        \"publicKey\": {\r\n            \"format\": \"RSA_X509_PEM\",\r\n            \"key\": \"-----BEGIN CERTIFICATE-----\\nMIIDujCCAqKgAwIBAgITaOszYpBme+SRHZUkFWLgDs7EMDANBgkqhkiG9w0BAQsF\\nADAeMQ0wCwYDVQQKEwRrb3JlMQ0wCwYDVQQDEwRrb3JlMB4XDTIyMDgwNDEwMzQy\\nMloXDTMyMDgwMTEwMzIwOFowADCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC\\nggEBAMFvTBHPdgH7+5wVlUnEdIS/0a4p9fkVzMdEMdDVr5s62VoGO7nZWxMCaxxU\\nXqQiGuX3N7SINyD7h8LI8CxQsn5zyDda3QVNGU7I96iWjwzOYJmNHAN1nRI2hRDY\\n8fJoQgTZI+IiRDBmgkmL9yjTY04qY7UP8zpofuMnKRuTwP6Ey1eFEMBqFfvgwrVl\\niLNcq9At0bd/vlQ0VUnKV6oKqSTq9ZDPB6Cxu5amhejVwTeE6p5GGmiKw5vskmtB\\ndGNgsom1K/pJdOMes8lODVp00tIVnsplL3jLgrWfbfCPALRnGz/C5XlKW8fNKEuW\\nqFw2Lhnk51dtobw/oBo7vJcx2w0CAwEAAaOCAQ0wggEJMA4GA1UdDwEB/wQEAwIF\\noDAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQUiRS8X3OWpJNpjQoJ+22xGb3xXTAf\\nBgNVHSMEGDAWgBTKO7S10CConGVgZZli7NVAcim/AzCBjQYIKwYBBQUHAQEEgYAw\\nfjB8BggrBgEFBQcwAoZwaHR0cDovL3ByaXZhdGVjYS1jb250ZW50LTYyZTM5YmRh\\nLTAwMDAtMjI0My1hNjFhLTNjMjg2ZDRlZWUwYS5zdG9yYWdlLmdvb2dsZWFwaXMu\\nY29tL2MwZGQxZjg3ZDcwZGZhMDEwNGEwL2NhLmNydDAZBgNVHREBAf8EDzANggtn\\nYWRnZW9uLmNvbTANBgkqhkiG9w0BAQsFAAOCAQEAK82b/xGn8B6Nfogw0myKjy3O\\nWg53YPXuct3E04qRmD3JJtFzpSkjI2WyRmIkRX1b5SKF+ImOmGzvENZDkjT/Y2I/\\nnsBL639OlXnz/+GYSq4rL6fVxXistP4LGA+khoBYSfHFZb7EYoVOYJFzZjnvJbtz\\n7XG0jTMeHo8KhCBPxrNWkOERrcc7OWqREldQ36yg7zdbRLjDOjeD6FByTrpRhbDC\\n0AeozF9ug9W/gPYtnkI++ksUqjJcV06uGd+9XLJPGcjH0Bai1alxROh+dkWx6TcB\\nHC94el4KR6EJijMvylmnOyKHedmYaDvb52+B6zXTW9rQkh1UycmONlmAlA3OeQ==\\n-----END CERTIFICATE-----\\n\"\r\n        }\r\n        }\r\n\r\n    ],\r\n    \"blocked\":false,\r\n    \"metadata\":{},\r\n    \"loglevel\":\"INFO\"\r\n\t\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseurl}}/device/projects/{{project}}/locations/asia-east1/registries/test1/devices",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"device",
+						"projects",
+						"{{project}}",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test1",
+						"devices"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Device",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"dev1\",\r\n    \"name\":\"project/my-iot-356305/locations/asia-east1/registries/test-shaiz/devices/dev1\",\r\n    \"credentials\":[\r\n        {\r\n        \"expirationTime\": \"2023-10-02T15:01:23.045123456Z\",\r\n        \"publicKey\": {\r\n            \"format\": \"RSA_X509_PEM\",\r\n            \"key\": \"-----BEGIN CERTIFICATE-----\\nMIIDTjCCAjagAwIBAgIUT1pnW729WKi7u7WsOZi9uBbPfWIwDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM2NDBaFw0zMjA3\\nMTcwNjM2NDBaMF8xCzAJBgNVBAYTAkNOMREwDwYDVQQIDAhaaGVqaWFuZzERMA8G\\nA1UEBwwISGFuZ3pob3UxDTALBgNVBAoMBEVNUVgxGzAZBgNVBAMMElNlcnZlciBj\\nZXJ0aWZpY2F0ZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMCW4X3v\\nCvwIxGFHXaUTMyHGl9vKR4p2jv+UyWm6MOVzBB8JH8OO5nWVQr8GRGMtQQHmxcLm\\nfPS4YQ1KBBnyVAxrI9nqf9HWstKXTtZHCKUjFWUd5ewpM8RnByezU/P628l9FxtW\\nZEk3G5tDjxXdPtSRxbd38sX4WBkNftJKXGseGXIG4MszuqQdmfCLqehLRSXZy3SF\\nBS+qU1g/8n913cU8KD65Uq2dq1/cafxZ1y3WK30Gq15hyaKbaiZefuMhepF5sTWa\\nPs74++SfhjKNN/d7EVEhV3UpOCTUxrwu0+AmUA0EL+RjXVNX4bTiSh9bKZxz+HaG\\nC6IQNWlkZTLHawMCAwEAAaMcMBowGAYDVR0RBBEwD4cEAAAAAIIHMC4wLjAuMDAN\\nBgkqhkiG9w0BAQsFAAOCAQEAJfI/NR/tQHN0hXdFSsBQ66L9/WhX/AsVrZ4//Yrl\\njeJQ8BXuJP/z+0GmDTgGdFlVrgkB5SEx1nLrJXqF0032KpawxpNG8e9QD9rUP4ll\\nPg43YJi6XSsNJ9Oo/UU2/FpYMBLzxlKgXPvuu83PYFykpqxqxSCw5sy4XDwTq9qx\\nlUIXgasIwZgonyKQuK+QEejqM5aunGEOKye1rImouRmnOoH6taCyyjnF5faLY5Ux\\nMBluKqF5oi2rawSuzNi9ywFgB6EXKZE25zx3gjyFBY+dHgAxDrKrSgT6ZSt1aveN\\nc8PNT5d23RTkXNGFzIljLCs45Ts4vxuNYSIdJORCkcce1w==\\n-----END CERTIFICATE-----\"\r\n        }\r\n        }\r\n\r\n    ],\r\n    \"blocked\":false,\r\n    \"metadata\":{},\r\n    \"loglevel\":\"INFO\"\r\n\t\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/device/projects/my-iot-356305/locations/asia-east1/registries/test-shaiz/devices",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"device",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test-shaiz",
+								"devices"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:21:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Create Device Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"postman.setNextRequest(\"Get Device\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"dev1\",\r\n    \"name\":\"project/my-iot-356305/locations/asia-east1/registries/test1/devices/dev1\",\r\n    \"credentials\":[\r\n        {\r\n        \"expirationTime\": \"2023-10-02T15:01:23.045123456Z\",\r\n        \"publicKey\": {\r\n            \"format\": \"RSA_X509_PEM\",\r\n            \"key\": \"-----BEGIN CERTIFICATE-----\\nMIIDujCCAqKgAwIBAgITaOszYpBme+SRHZUkFWLgDs7EMDANBgkqhkiG9w0BAQsF\\nADAeMQ0wCwYDVQQKEwRrb3JlMQ0wCwYDVQQDEwRrb3JlMB4XDTIyMDgwNDEwMzQy\\nMloXDTMyMDgwMTEwMzIwOFowADCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC\\nggEBAMFvTBHPdgH7+5wVlUnEdIS/0a4p9fkVzMdEMdDVr5s62VoGO7nZWxMCaxxU\\nXqQiGuX3N7SINyD7h8LI8CxQsn5zyDda3QVNGU7I96iWjwzOYJmNHAN1nRI2hRDY\\n8fJoQgTZI+IiRDBmgkmL9yjTY04qY7UP8zpofuMnKRuTwP6Ey1eFEMBqFfvgwrVl\\niLNcq9At0bd/vlQ0VUnKV6oKqSTq9ZDPB6Cxu5amhejVwTeE6p5GGmiKw5vskmtB\\ndGNgsom1K/pJdOMes8lODVp00tIVnsplL3jLgrWfbfCPALRnGz/C5XlKW8fNKEuW\\nqFw2Lhnk51dtobw/oBo7vJcx2w0CAwEAAaOCAQ0wggEJMA4GA1UdDwEB/wQEAwIF\\noDAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQUiRS8X3OWpJNpjQoJ+22xGb3xXTAf\\nBgNVHSMEGDAWgBTKO7S10CConGVgZZli7NVAcim/AzCBjQYIKwYBBQUHAQEEgYAw\\nfjB8BggrBgEFBQcwAoZwaHR0cDovL3ByaXZhdGVjYS1jb250ZW50LTYyZTM5YmRh\\nLTAwMDAtMjI0My1hNjFhLTNjMjg2ZDRlZWUwYS5zdG9yYWdlLmdvb2dsZWFwaXMu\\nY29tL2MwZGQxZjg3ZDcwZGZhMDEwNGEwL2NhLmNydDAZBgNVHREBAf8EDzANggtn\\nYWRnZW9uLmNvbTANBgkqhkiG9w0BAQsFAAOCAQEAK82b/xGn8B6Nfogw0myKjy3O\\nWg53YPXuct3E04qRmD3JJtFzpSkjI2WyRmIkRX1b5SKF+ImOmGzvENZDkjT/Y2I/\\nnsBL639OlXnz/+GYSq4rL6fVxXistP4LGA+khoBYSfHFZb7EYoVOYJFzZjnvJbtz\\n7XG0jTMeHo8KhCBPxrNWkOERrcc7OWqREldQ36yg7zdbRLjDOjeD6FByTrpRhbDC\\n0AeozF9ug9W/gPYtnkI++ksUqjJcV06uGd+9XLJPGcjH0Bai1alxROh+dkWx6TcB\\nHC94el4KR6EJijMvylmnOyKHedmYaDvb52+B6zXTW9rQkh1UycmONlmAlA3OeQ==\\n-----END CERTIFICATE-----\\n\"\r\n        }\r\n        }\r\n\r\n    ],\r\n    \"blocked\":false,\r\n    \"metadata\":{},\r\n    \"loglevel\":\"INFO\"\r\n\t\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseurl}}/device/projects/{{project}}/locations/asia-east1/registries/test1/devices",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"device",
+						"projects",
+						"{{project}}",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test1",
+						"devices"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Device",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"dev1\",\r\n    \"name\":\"project/my-iot-356305/locations/asia-east1/registries/test-shaiz/devices/dev1\",\r\n    \"credentials\":[\r\n        {\r\n        \"expirationTime\": \"2023-10-02T15:01:23.045123456Z\",\r\n        \"publicKey\": {\r\n            \"format\": \"RSA_X509_PEM\",\r\n            \"key\": \"-----BEGIN CERTIFICATE-----\\nMIIDTjCCAjagAwIBAgIUT1pnW729WKi7u7WsOZi9uBbPfWIwDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM2NDBaFw0zMjA3\\nMTcwNjM2NDBaMF8xCzAJBgNVBAYTAkNOMREwDwYDVQQIDAhaaGVqaWFuZzERMA8G\\nA1UEBwwISGFuZ3pob3UxDTALBgNVBAoMBEVNUVgxGzAZBgNVBAMMElNlcnZlciBj\\nZXJ0aWZpY2F0ZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMCW4X3v\\nCvwIxGFHXaUTMyHGl9vKR4p2jv+UyWm6MOVzBB8JH8OO5nWVQr8GRGMtQQHmxcLm\\nfPS4YQ1KBBnyVAxrI9nqf9HWstKXTtZHCKUjFWUd5ewpM8RnByezU/P628l9FxtW\\nZEk3G5tDjxXdPtSRxbd38sX4WBkNftJKXGseGXIG4MszuqQdmfCLqehLRSXZy3SF\\nBS+qU1g/8n913cU8KD65Uq2dq1/cafxZ1y3WK30Gq15hyaKbaiZefuMhepF5sTWa\\nPs74++SfhjKNN/d7EVEhV3UpOCTUxrwu0+AmUA0EL+RjXVNX4bTiSh9bKZxz+HaG\\nC6IQNWlkZTLHawMCAwEAAaMcMBowGAYDVR0RBBEwD4cEAAAAAIIHMC4wLjAuMDAN\\nBgkqhkiG9w0BAQsFAAOCAQEAJfI/NR/tQHN0hXdFSsBQ66L9/WhX/AsVrZ4//Yrl\\njeJQ8BXuJP/z+0GmDTgGdFlVrgkB5SEx1nLrJXqF0032KpawxpNG8e9QD9rUP4ll\\nPg43YJi6XSsNJ9Oo/UU2/FpYMBLzxlKgXPvuu83PYFykpqxqxSCw5sy4XDwTq9qx\\nlUIXgasIwZgonyKQuK+QEejqM5aunGEOKye1rImouRmnOoH6taCyyjnF5faLY5Ux\\nMBluKqF5oi2rawSuzNi9ywFgB6EXKZE25zx3gjyFBY+dHgAxDrKrSgT6ZSt1aveN\\nc8PNT5d23RTkXNGFzIljLCs45Ts4vxuNYSIdJORCkcce1w==\\n-----END CERTIFICATE-----\"\r\n        }\r\n        }\r\n\r\n    ],\r\n    \"blocked\":false,\r\n    \"metadata\":{},\r\n    \"loglevel\":\"INFO\"\r\n\t\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/device/projects/my-iot-356305/locations/asia-east1/registries/test-shaiz/devices",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"device",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test-shaiz",
+								"devices"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:21:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Get Device",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"postman.setNextRequest(\"Delete Registry Copy\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/device/projects/{{project}}/locations/asia-east1/registries/test1/devices/dev1",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"device",
+						"projects",
+						"{{project}}",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test1",
+						"devices",
+						"dev1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Device",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/device/projects/my-iot-356305/locations/asia-east1/registries/test-shaiz/devices/dev1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"device",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test-shaiz",
+								"devices",
+								"dev1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:17:56 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1640"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"project\": \"my-iot-356305\",\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1/registries/test-shaiz\",\n    \"region\": \"asia-east1\",\n    \"registry\": \"test-shaiz\",\n    \"id\": \"dev1\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test-shaiz/devices/dev1\",\n    \"credentials\": [\n        {\n            \"expirationTime\": \"2023-10-02T15:01:23.045123456Z\",\n            \"publicKey\": {\n                \"format\": \"RSA_X509_PEM\",\n                \"key\": \"-----BEGIN CERTIFICATE-----\\nMIIDTjCCAjagAwIBAgIUT1pnW729WKi7u7WsOZi9uBbPfWIwDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM2NDBaFw0zMjA3\\nMTcwNjM2NDBaMF8xCzAJBgNVBAYTAkNOMREwDwYDVQQIDAhaaGVqaWFuZzERMA8G\\nA1UEBwwISGFuZ3pob3UxDTALBgNVBAoMBEVNUVgxGzAZBgNVBAMMElNlcnZlciBj\\nZXJ0aWZpY2F0ZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMCW4X3v\\nCvwIxGFHXaUTMyHGl9vKR4p2jv+UyWm6MOVzBB8JH8OO5nWVQr8GRGMtQQHmxcLm\\nfPS4YQ1KBBnyVAxrI9nqf9HWstKXTtZHCKUjFWUd5ewpM8RnByezU/P628l9FxtW\\nZEk3G5tDjxXdPtSRxbd38sX4WBkNftJKXGseGXIG4MszuqQdmfCLqehLRSXZy3SF\\nBS+qU1g/8n913cU8KD65Uq2dq1/cafxZ1y3WK30Gq15hyaKbaiZefuMhepF5sTWa\\nPs74++SfhjKNN/d7EVEhV3UpOCTUxrwu0+AmUA0EL+RjXVNX4bTiSh9bKZxz+HaG\\nC6IQNWlkZTLHawMCAwEAAaMcMBowGAYDVR0RBBEwD4cEAAAAAIIHMC4wLjAuMDAN\\nBgkqhkiG9w0BAQsFAAOCAQEAJfI/NR/tQHN0hXdFSsBQ66L9/WhX/AsVrZ4//Yrl\\njeJQ8BXuJP/z+0GmDTgGdFlVrgkB5SEx1nLrJXqF0032KpawxpNG8e9QD9rUP4ll\\nPg43YJi6XSsNJ9Oo/UU2/FpYMBLzxlKgXPvuu83PYFykpqxqxSCw5sy4XDwTq9qx\\nlUIXgasIwZgonyKQuK+QEejqM5aunGEOKye1rImouRmnOoH6taCyyjnF5faLY5Ux\\nMBluKqF5oi2rawSuzNi9ywFgB6EXKZE25zx3gjyFBY+dHgAxDrKrSgT6ZSt1aveN\\nc8PNT5d23RTkXNGFzIljLCs45Ts4vxuNYSIdJORCkcce1w==\\n-----END CERTIFICATE-----\"\n            }\n        }\n    ],\n    \"logLevel\": \"INFO\",\n    \"blocked\": false,\n    \"metadata\": {}\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Registry Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"postman.setNextRequest(\"Get Registry Copy\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp123\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseurl}}/registry/projects/{{project}}/locations/asia-east1/registries/test1",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"projects",
+						"{{project}}",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Registry",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"test123\",\r\n    \"name\":\"projects/my-iot-356305/locations/asia-east1/registries/test123\",\r\n    \"mqttConfig\":{\r\n                    \"mqttEnabledState\": \"MQTT_ENABLED\"\r\n    },\r\n    \"httpConfig\":{\r\n                    \"httpEnabledState\": \"HTTP_ENABLED\"\r\n    },\r\n    \"logLevel\":\"INFO\",\r\n    \"stateNotificationConfig\":{\r\n            \"pubsubTopicName\": \"\"\r\n    },\r\n    \"eventNotificationConfigs\":[{\r\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp123\"\r\n    }],\r\n    \"Credentials\":[{\r\n        \"publicKeyCertificate\": {\r\n            \"format\": \"X509_CERTIFICATE_PEM\",\r\n            \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\"\r\n        }\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:24:36 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "10"
+						}
+					],
+					"cookie": [],
+					"body": "\"Success\""
+				}
+			]
+		},
+		{
+			"name": "Get Registry Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"postman.setNextRequest(null)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/registry/projects/{{project}}/locations/asia-east1/registries/test1",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"registry",
+						"projects",
+						"{{project}}",
+						"locations",
+						"asia-east1",
+						"registries",
+						"test1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Registry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/registry/projects/my-iot-356305/locations/asia-east1/registries/test123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"registry",
+								"projects",
+								"my-iot-356305",
+								"locations",
+								"asia-east1",
+								"registries",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 30 Jul 2022 06:18:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"parent\": \"projects/my-iot-356305/locations/asia-east1\",\n    \"project\": \"my-iot-356305\",\n    \"region\": \"asia-east1\",\n    \"id\": \"test123\",\n    \"name\": \"projects/my-iot-356305/locations/asia-east1/registries/test123\",\n    \"eventNotificationConfigs\": [\n        {\n            \"pubsubTopicName\": \"projects/my-iot-356305/topics/Temp1\"\n        }\n    ],\n    \"stateNotificationConfig\": {},\n    \"mqttConfig\": {\n        \"mqttEnabledState\": \"MQTT_ENABLED\"\n    },\n    \"httpConfig\": {\n        \"httpEnabledState\": \"HTTP_ENABLED\"\n    },\n    \"logLevel\": \"INFO\",\n    \"credentials\": [\n        {\n            \"publicKeyCertificate\": {\n                \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIUJnzVcm0k4VSLlSyEY9ZfKdYIQEowDQYJKoZIhvcNAQEL\\nBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM\\nGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMjA3MjAwNjM1MDVaFw0zMjA3\\nMTcwNjM1MDVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw\\nHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB\\nAQUAA4IBDwAwggEKAoIBAQCgrj1qe/rajWMILY3vwCrvt+rmvyJf1MNpROLiDIRT\\n3/afHzN6t+SW1WHp9lRD6Wx7MDdl/K9f+d7HYFV+bahFFP+2Q3uoCss0Y9/Rwa9B\\nm/DZVCYNL3xsSBVg8uTZtMbb77FjEMpA4dc/bSgz2Kwm/xA75mWd76FHpz6w8wvb\\nN7ZBo7Cm0VmA+V4GTDDjarZm6u6Sgx/yRDFF522xjlhouLQdGq5KO0DUtZtJLzgr\\ntkEdGcwgXiFmIqxibtsaX8P3/RZC2od4p8qfDEcLrLFcAz1CJgromihB3746p+Rb\\nuLfmF8xraWdL5LEunvGZzWTaBu/aZH6m+M8ugPlMEOOlAgMBAAGjUzBRMB0GA1Ud\\nDgQWBBQj/4S4H0VHgFu+UH2bituvZ+wkHDAfBgNVHSMEGDAWgBQj/4S4H0VHgFu+\\nUH2bituvZ+wkHDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA4\\n/ouMPFQBcSZlZgezjyCmz1V8Od8q9c1xV6WFcm3JiopXkX9M11O1EgNvsNtlY5HR\\nN29kBb6YhgDCrPud8wwa225YqF4Q4Jfgrvbi0gx6gMZk9aoryMaxTch9c8O+1+uw\\nCa6Ylnp7TFdshwXTmC8Ttt3S1NTbffh+OjeYsHUGlRMOFZOVD9gJ+7J0gJ5YwgKC\\nTc809z32AOboKRGDiu9lTlpOVJl+qJIIrn+Te4gO+VQnSzY+cg0cxQpQV84u2iJv\\nvhjRHJNeYxgW0IhTt9jMfHA4Fpld35BaexrBO7AbPurGu/SjiBJXdovocIyD46b1\\nclRTB+jxHFr2oIykiMsg\\n-----END CERTIFICATE-----\",\n                \"format\": \"X509_CERTIFICATE_PEM\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "cert",
+			"value": ""
+		}
+	]
+}

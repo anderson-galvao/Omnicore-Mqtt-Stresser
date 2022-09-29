@@ -18,9 +18,10 @@ import (
 )
 
 var (
-	resultChan   = make(chan Result)
-	stopWaitLoop = false
-	randomSource = rand.New(rand.NewSource(time.Now().UnixNano()))
+	SummaryChannelData = make(chan Summary, 1)
+	resultChan         = make(chan Result)
+	stopWaitLoop       = false
+	randomSource       = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	errorLogger   = log.New(os.Stderr, "ERROR: ", log.Lmicroseconds|log.Ltime|log.Lshortfile)
 	verboseLogger = log.New(os.Stderr, "DEBUG: ", log.Lmicroseconds|log.Ltime|log.Lshortfile)
@@ -109,7 +110,7 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
 	// }
 	subscriberClientIdTemplate := "tenants/KoreWireless/locations/us-central1/registries/KoreWireless/devices/StateManager%d"
 	publisherClientIdTemplate := "tenants/KoreWireless/locations/us-central1/registries/KoreWireless/devices/Stresser%d"
-	topicNameTemplate := "tenants/KoreWirelessStress/registries/KoreWirelessStress/devices/StateManager%d/events"
+	topicNameTemplate := "tenants/KoreWireless/registries/KoreWirelessStress/devices/Router%d/events"
 	argNumClients := Arguments.Clients
 	argNumMessages := Arguments.Messages
 	argConstantPayload := ""
@@ -250,7 +251,6 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
 		fmt.Fprintf(os.Stderr, "Failed parse '--pause-between-messages': %q is not a valid duration string. See https://golang.org/pkg/time/#ParseDuration for valid duration strings\n", argPauseBetweenMessages)
 		return err
 	}
-
 	stopStartLoop := false
 	for cid := 0; cid < argNumClients && !stopStartLoop; cid++ {
 
@@ -287,11 +287,9 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
 		}).Run(testCtx)
 	}
 	fmt.Printf("%d worker started\n", argNumClients)
-
 	finEvents := 0
 
 	results := make([]Result, argNumClients)
-
 	for finEvents < argNumClients && !stopWaitLoop {
 		select {
 		case msg := <-resultChan:
@@ -333,13 +331,12 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
 	}
 
 	summary, err := buildSummary(argNumClients, num, results)
-
 	if err != nil {
 		return err
 	} else {
 		printSummary(summary)
+		SummaryChannelData <- summary
 	}
-
 	if argProfileMem != "" {
 		f, err := os.Create(argProfileMem)
 
@@ -354,8 +351,6 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
 		}
 		f.Close()
 	}
-
 	pprof.StopCPUProfile()
-
 	return nil
 }

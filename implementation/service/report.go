@@ -15,6 +15,25 @@ const (
 	ProgressReportEvent  = "ProgressReport"
 )
 
+type SummaryChannel struct {
+	Clients           int
+	TotalMessages     int
+	MessagesReceived  int
+	MessagesPublished int
+	Errors            int
+	Completed         int
+	InProgress        int
+	ConnectFailed     int
+	SubscribeFailed   int
+	TimeoutExceeded   int
+	Aborted           int
+
+	// ordered results
+	FastestPublishPerformance float64
+	SlowestPublishPerformance float64
+
+	PublishPerformanceMedian float64
+}
 type Summary struct {
 	Clients           int
 	TotalMessages     int

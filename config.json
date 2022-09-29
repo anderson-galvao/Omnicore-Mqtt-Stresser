@@ -2,5 +2,5 @@
   "debug": "true",
   "ENV_AUTH_SERVER": ":8091",
   "CONTEXT.TIMEOUT": 2,
-  "ENV_BROKER_URL": "tcp://vernemq-dep.default.svc.cluster.local:1883"
+  "ENV_BROKER_URL": "tcp://dev-vernemq.cloud.korewireless.com:1883"
 }

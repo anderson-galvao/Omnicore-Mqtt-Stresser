@@ -5,13 +5,14 @@ import (
 	"github.com/RacoWireless/iot-gw-stresser/model"
 )
 
-func (i *Usecase) ExecuteStresser(Arguments model.Stresser) (model.Response, error) {
-	err := i.StresserService.ExecuteStresser(Arguments)
-	dr := utils.FrameGenericResponse(400, model.INVALIDCA, "")
-	if err != nil {
+func (i *Usecase) ExecuteStresser(Arguments model.Stresser) (dr model.Response, err error) {
+	err = i.StresserService.ExecuteStresser(Arguments)
 
+	if err != nil {
+		dr = utils.FrameGenericResponse(500, model.SERVERERROR, "")
 		return dr, err
 
 	}
+	dr = utils.FrameGenericResponse(200, "Success", "")
 	return dr, nil
 }

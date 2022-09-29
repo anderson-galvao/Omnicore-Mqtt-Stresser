@@ -15,5 +15,6 @@ func NewIoTtHandler(e *echo.Echo, Usecase model.Usecase) {
 	}
 
 	e.POST("/stress", Handler.ExecuteStresser)
+	e.GET("/ws", Handler.StreamResults)
 
 }

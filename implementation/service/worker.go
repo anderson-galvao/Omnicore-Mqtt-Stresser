@@ -126,10 +126,9 @@ func (w *Worker) Run(ctx context.Context) {
 	publisherClientId := fmt.Sprintf(w.publisherClientIdTemplate, w.WorkerId)
 
 	verboseLogger.Printf("[%d] topic=%s subscriberClientId=%s publisherClientId=%s\n", cid, topicName, subscriberClientId, publisherClientId)
-	password := "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJteS1pb3QtMzU2MzA1IiwiZXhwIjoxNjk1NjY3OTc0LCJpYXQiOjE2NjQxMTAzNzR9.T_kzjb2mQVtF_0J9zY7QuJiY8z5sd8-VNN8XW06xo1CGQvpjYnOcfVs0tfh6t8VWDZq5PndcbNTNCybZbJd4Dhzxw_Rz-6PJoFqe9HisIl7xyRNanxzVEeeBE-3SSmJRSPTGYjx6VHZU2xRYCNmXSi0UdLPi6P43-TdK3gPZDR57CJQbbGUdVSotVAz9tbETNBdthZK6tpw8o8EgKpsBfKKOzNmXYAtt9wHuoPSI_HlFSviMMEEYZuC8Ss3xJ6nGWJuQEY6G4epsrnjxneT3fHGcjflI-if4FmdRmxmcvCQBrZd2UGvylJTK96Ir3WQfcJbQdT2n9Fc7VVifYR3Lzw"
-	publisherOptions := mqtt.NewClientOptions().SetClientID(publisherClientId).SetUsername("unused").SetPassword(password).AddBroker(w.BrokerUrl)
+	publisherOptions := mqtt.NewClientOptions().SetClientID(publisherClientId).SetUsername("unused").SetPassword(w.Password).AddBroker(w.BrokerUrl)
 
-	subscriberOptions := mqtt.NewClientOptions().SetClientID(subscriberClientId).SetUsername("unused").SetPassword(password).AddBroker(w.BrokerUrl)
+	subscriberOptions := mqtt.NewClientOptions().SetClientID(subscriberClientId).SetUsername("unused").SetPassword(w.Password).AddBroker(w.BrokerUrl)
 
 	subscriberOptions.SetDefaultPublishHandler(func(client mqtt.Client, msg mqtt.Message) {
 		atomic.AddUint64(&SubscribeHandlerCount, 1)

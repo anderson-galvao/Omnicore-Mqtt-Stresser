@@ -4,12 +4,12 @@ import (
 	"github.com/RacoWireless/iot-gw-stresser/model"
 )
 
-type Service struct {
-	Tenant string
+type StresserService struct {
+	BrokerUrl string
 }
 
-func NewService(Tenant string) model.Service {
-	return &Service{
-		Tenant: Tenant,
+func NewStresserService(BrokerUrl string) model.StresserService {
+	return &StresserService{
+		BrokerUrl: BrokerUrl,
 	}
 }

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"net/http"
 	"os"
@@ -13,9 +12,8 @@ import (
 	"github.com/ztrue/shutdown"
 
 	iotDelivery "github.com/RacoWireless/iot-gw-stresser/implementation/_start/http"
-	pubSubService "github.com/RacoWireless/iot-gw-stresser/implementation/service/pubsub"
+	iotService "github.com/RacoWireless/iot-gw-stresser/implementation/service"
 	iotUsecase "github.com/RacoWireless/iot-gw-stresser/implementation/usecase"
-	"github.com/RacoWireless/iot-gw-stresser/model"
 
 	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"
@@ -107,12 +105,16 @@ func main() {
 	}))
 	p := prometheus.NewPrometheus("echo", nil)
 	p.Use(e)
-	timeoutContext := time.Duration(viper.GetInt("CONTEXT.TIMEOUT")) * time.Second
+	//timeoutContext := time.Duration(viper.GetInt("CONTEXT.TIMEOUT")) * time.Second
+	brokerUrl := viper.GetString("ENV_BROKER_URL")
+	if brokerUrl == "" {
+		log.Panic().Msg("Configuration Error: BROKER URL String not available")
 
-	StressService := iotService.NewService(timeoutContext)
-	Usecase := iotUsecase.NewHealthUsecase(healthRepo, timeoutContext)
+	}
+	StressService := iotService.NewStresserService(brokerUrl)
+	Usecase := iotUsecase.NewUsecase(StressService)
 
-	iotDelivery.NewIoTtHandler(e, registryUsecase, deviceUsecase, healthUsecase, tenantUsecase, userUsecase, roleUsecase)
+	iotDelivery.NewIoTtHandler(e, Usecase)
 	shutdown.Add(func() {
 		log.Info().Msg("Stopping...")
 		time.Sleep(time.Second)

@@ -14,6 +14,6 @@ func NewIoTtHandler(e *echo.Echo, Usecase model.Usecase) {
 		Usecase: Usecase,
 	}
 
-	e.GET("/health", Handler.HealthCheck)
+	e.POST("/stress", Handler.ExecuteStresser)
 
 }

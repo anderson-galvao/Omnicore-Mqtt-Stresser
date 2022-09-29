@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	connStr := "user=postgres dbname=iot-core-dev password=iot-core-dev host=34.81.43.98 sslmode=disable"
+	connStr := "user=postgres dbname=iot_core_dev password=iot-core-dev host=104.199.209.231 sslmode=disable"
 
 	tenant := "KoreWireless"
 	region := "us-central1"

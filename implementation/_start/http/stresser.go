@@ -55,6 +55,8 @@ func (r *Handler) StreamResults(c echo.Context) error {
 	defer ws.Close()
 	var quit bool = false
 	var wsData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPublishPerformance: 9999}
+	var slowestPerformance float64
+	var fastestPerformance float64
 	channel := make(chan bool)
 	go func() {
 		for {
@@ -72,8 +74,7 @@ func (r *Handler) StreamResults(c echo.Context) error {
 		case <-channel:
 			quit = true
 		case summary := <-Stresser.SummaryChannelData:
-			var slowestPerformance float64
-			var fastestPerformance float64
+
 			if wsData.SlowestPublishPerformance > summary.PublishPerformance[0] {
 				slowestPerformance = summary.PublishPerformance[0]
 			}

@@ -98,7 +98,7 @@ func loadTLSFile(fileName string) ([]byte, error) {
 	return nil, nil
 }
 
-func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
+func (d *StresserService) ExecuteStresser(Arguments model.Stresser, tenant string) error {
 	// flag.Parse()
 
 	// if flag.NFlag() < 1 || *argHelp {
@@ -108,9 +108,10 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
 	// 	}
 	// 	return errors.New("Arg Help Not Found")
 	// }
-	subscriberClientIdTemplate := "tenants/KoreWireless/locations/us-central1/registries/KoreWireless/devices/StateManager%d"
-	publisherClientIdTemplate := "tenants/KoreWireless/locations/us-central1/registries/KoreWireless/devices/Stresser%d"
-	topicNameTemplate := "tenants/KoreWireless/registries/KoreWirelessStress/devices/Router%d/events"
+	tenantTemplate := fmt.Sprintf("tenants/%s", tenant)
+	subscriberClientIdTemplate := tenantTemplate + "/locations/us-central1/registries/KoreWireless/devices/StateManager%d"
+	publisherClientIdTemplate := tenantTemplate + "/locations/us-central1/registries/KoreWireless/devices/Stresser%d"
+	topicNameTemplate := tenantTemplate + "/registries/KoreWirelessStress/devices/Router%d/events"
 	argNumClients := Arguments.Clients
 	argNumMessages := Arguments.Messages
 	argConstantPayload := ""
@@ -266,6 +267,7 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
 		}
 
 		go (&Worker{
+			tenant:                     tenant,
 			publisherClientIdTemplate:  publisherClientIdTemplate,
 			subscriberClientIdTemplate: subscriberClientIdTemplate,
 			topicNameTemplate:          topicNameTemplate,
@@ -330,7 +332,7 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser) error {
 		}
 	}
 
-	summary, err := buildSummary(argNumClients, num, results)
+	summary, err := buildSummary(argNumClients, num, results, tenant)
 	if err != nil {
 		return err
 	} else {

@@ -16,6 +16,7 @@ const (
 )
 
 type SummaryChannel struct {
+	Tenant            string
 	Clients           int
 	TotalMessages     int
 	MessagesReceived  int
@@ -35,6 +36,7 @@ type SummaryChannel struct {
 	PublishPerformanceMedian float64
 }
 type Summary struct {
+	Tenant            string
 	Clients           int
 	TotalMessages     int
 	MessagesReceived  int
@@ -59,7 +61,7 @@ type Summary struct {
 	ReceivePerformanceHistogram map[float64]float64
 }
 
-func buildSummary(nClient int, nMessages int, results []Result) (Summary, error) {
+func buildSummary(nClient int, nMessages int, results []Result, tenant string) (Summary, error) {
 
 	if len(results) == 0 {
 		return Summary{}, errors.New("no results collected")
@@ -123,6 +125,7 @@ func buildSummary(nClient int, nMessages int, results []Result) (Summary, error)
 	errorRate := float64(nErrors) / float64(nClient) * 100
 
 	return Summary{
+		Tenant:                      tenant,
 		Clients:                     nClient,
 		TotalMessages:               totalMessages,
 		MessagesReceived:            nMessagesReceived,

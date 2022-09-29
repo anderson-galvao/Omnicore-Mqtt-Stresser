@@ -2,15 +2,16 @@ package http
 
 import (
 	"encoding/json"
+	"math"
+	"net/http"
+	"time"
+
 	Stresser "github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/service"
 	"github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/utils"
 	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
-	"math"
-	"net/http"
-	"time"
 )
 
 // Stress godoc
@@ -44,6 +45,13 @@ func (r *Handler) ExecuteStresser(c echo.Context) error {
 	return nil
 }
 
+var singleData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPublishPerformance: 9999}
+
+var slowestPerformance float64
+var fastestPerformance float64
+var tenants = map[string]int{"KoreWireless": 0}
+var wsData = []Stresser.SummaryChannel{singleData, singleData, singleData}
+
 func (r *Handler) StreamResults(c echo.Context) error {
 	var upgrader = websocket.Upgrader{CheckOrigin: func(r *http.Request) bool {
 		return true
@@ -54,9 +62,7 @@ func (r *Handler) StreamResults(c echo.Context) error {
 	}
 	defer ws.Close()
 	var quit bool = false
-	var wsData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPublishPerformance: 9999}
-	var slowestPerformance float64
-	var fastestPerformance float64
+
 	channel := make(chan bool)
 	go func() {
 		for {
@@ -74,28 +80,29 @@ func (r *Handler) StreamResults(c echo.Context) error {
 		case <-channel:
 			quit = true
 		case summary := <-Stresser.SummaryChannelData:
-
-			if wsData.SlowestPublishPerformance > summary.PublishPerformance[0] {
+			id := tenants[summary.Tenant]
+			if wsData[id].SlowestPublishPerformance > summary.PublishPerformance[0] {
 				slowestPerformance = summary.PublishPerformance[0]
 			}
-			if wsData.FastestPublishPerformance < summary.PublishPerformance[len(summary.PublishPerformance)-1] {
+			if wsData[id].FastestPublishPerformance < summary.PublishPerformance[len(summary.PublishPerformance)-1] {
 				fastestPerformance = summary.PublishPerformance[len(summary.PublishPerformance)-1]
 			}
-			wsData = Stresser.SummaryChannel{
-				Clients:                   wsData.Clients + summary.Clients,
-				TotalMessages:             wsData.TotalMessages + summary.TotalMessages,
-				MessagesReceived:          wsData.MessagesReceived + summary.MessagesReceived,
-				MessagesPublished:         wsData.MessagesPublished + summary.MessagesPublished,
-				Errors:                    wsData.Errors + summary.Errors,
-				Completed:                 wsData.Completed + summary.Completed,
-				InProgress:                wsData.InProgress + summary.InProgress,
-				ConnectFailed:             wsData.ConnectFailed + summary.ConnectFailed,
-				SubscribeFailed:           wsData.SubscribeFailed + summary.SubscribeFailed,
-				TimeoutExceeded:           wsData.TimeoutExceeded + summary.TimeoutExceeded,
-				Aborted:                   wsData.Aborted + summary.Aborted,
+			wsData[id] = Stresser.SummaryChannel{
+				Tenant:                    summary.Tenant,
+				Clients:                   wsData[id].Clients + summary.Clients,
+				TotalMessages:             wsData[id].TotalMessages + summary.TotalMessages,
+				MessagesReceived:          wsData[id].MessagesReceived + summary.MessagesReceived,
+				MessagesPublished:         wsData[id].MessagesPublished + summary.MessagesPublished,
+				Errors:                    wsData[id].Errors + summary.Errors,
+				Completed:                 wsData[id].Completed + summary.Completed,
+				InProgress:                wsData[id].InProgress + summary.InProgress,
+				ConnectFailed:             wsData[id].ConnectFailed + summary.ConnectFailed,
+				SubscribeFailed:           wsData[id].SubscribeFailed + summary.SubscribeFailed,
+				TimeoutExceeded:           wsData[id].TimeoutExceeded + summary.TimeoutExceeded,
+				Aborted:                   wsData[id].Aborted + summary.Aborted,
 				FastestPublishPerformance: math.Round(fastestPerformance),
 				SlowestPublishPerformance: math.Round(slowestPerformance),
-				PublishPerformanceMedian:  (wsData.PublishPerformanceMedian + summary.PublishPerformanceMedian) / 2,
+				PublishPerformanceMedian:  (wsData[id].PublishPerformanceMedian + summary.PublishPerformanceMedian) / 2,
 			}
 
 		}

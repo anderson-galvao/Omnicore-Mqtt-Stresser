@@ -6,7 +6,7 @@ import (
 )
 
 func (i *Usecase) ExecuteStresser(Arguments model.Stresser) (dr model.Response, err error) {
-	err = i.StresserService.ExecuteStresser(Arguments)
+	err = i.StresserService.ExecuteStresser(Arguments, "KoreWireless")
 
 	if err != nil {
 		dr = utils.FrameGenericResponse(500, model.SERVERERROR, "")

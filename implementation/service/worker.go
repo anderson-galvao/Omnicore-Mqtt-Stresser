@@ -41,6 +41,7 @@ func filePayloadGenerator(filepath string) PayloadGenerator {
 }
 
 type Worker struct {
+	tenant                     string
 	subscriberClientIdTemplate string
 	publisherClientIdTemplate  string
 	topicNameTemplate          string

@@ -44,10 +44,6 @@ func (r *Handler) ExecuteStresser(c echo.Context) error {
 	return nil
 }
 
-var wsData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPublishPerformance: 9999}
-var slowestPerformance float64
-var fastestPerformance float64
-
 func (r *Handler) StreamResults(c echo.Context) error {
 	var upgrader = websocket.Upgrader{CheckOrigin: func(r *http.Request) bool {
 		return true
@@ -58,7 +54,9 @@ func (r *Handler) StreamResults(c echo.Context) error {
 	}
 	defer ws.Close()
 	var quit bool = false
-
+	var wsData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPublishPerformance: 9999}
+	var slowestPerformance float64
+	var fastestPerformance float64
 	channel := make(chan bool)
 	go func() {
 		for {

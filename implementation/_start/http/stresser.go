@@ -2,15 +2,15 @@ package http
 
 import (
 	"encoding/json"
-	"net/http"
-	"time"
-
 	Stresser "github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/service"
 	"github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/utils"
 	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
+	"math"
+	"net/http"
+	"time"
 )
 
 // Stress godoc
@@ -54,7 +54,7 @@ func (r *Handler) StreamResults(c echo.Context) error {
 	}
 	defer ws.Close()
 	var quit bool = false
-	var wsData = Stresser.SummaryChannel{}
+	var wsData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPublishPerformance: 9999}
 	channel := make(chan bool)
 	go func() {
 		for {
@@ -77,7 +77,7 @@ func (r *Handler) StreamResults(c echo.Context) error {
 			if wsData.SlowestPublishPerformance > summary.PublishPerformance[0] {
 				slowestPerformance = summary.PublishPerformance[0]
 			}
-			if wsData.FastestPublishPerformance > summary.PublishPerformance[len(summary.PublishPerformance)-1] {
+			if wsData.FastestPublishPerformance < summary.PublishPerformance[len(summary.PublishPerformance)-1] {
 				fastestPerformance = summary.PublishPerformance[len(summary.PublishPerformance)-1]
 			}
 			wsData = Stresser.SummaryChannel{
@@ -92,8 +92,8 @@ func (r *Handler) StreamResults(c echo.Context) error {
 				SubscribeFailed:           wsData.SubscribeFailed + summary.SubscribeFailed,
 				TimeoutExceeded:           wsData.TimeoutExceeded + summary.TimeoutExceeded,
 				Aborted:                   wsData.Aborted + summary.Aborted,
-				FastestPublishPerformance: fastestPerformance,
-				SlowestPublishPerformance: slowestPerformance,
+				FastestPublishPerformance: math.Round(fastestPerformance),
+				SlowestPublishPerformance: math.Round(slowestPerformance),
 				PublishPerformanceMedian:  (wsData.PublishPerformanceMedian + summary.PublishPerformanceMedian) / 2,
 			}
 

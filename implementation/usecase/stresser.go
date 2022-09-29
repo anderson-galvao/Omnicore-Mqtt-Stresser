@@ -6,8 +6,8 @@ import (
 )
 
 func (i *Usecase) ExecuteStresser(Arguments model.Stresser) (dr model.Response, err error) {
-	err = i.StresserService.ExecuteStresser(Arguments, "KoreWireless")
-
+	err = i.StresserService.ExecuteStresser(Arguments, "Pepsi")
+	err = i.StresserService.ExecuteStresser(Arguments, "Cola")
 	if err != nil {
 		dr = utils.FrameGenericResponse(500, model.SERVERERROR, "")
 		return dr, err

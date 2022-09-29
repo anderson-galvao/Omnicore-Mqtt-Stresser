@@ -49,8 +49,14 @@ var singleData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPu
 
 var slowestPerformance float64
 var fastestPerformance float64
-var tenants = map[string]int{"KoreWireless": 0}
-var wsData = []Stresser.SummaryChannel{singleData, singleData, singleData}
+var tenants = map[string]int{"Pepsi": 0, "Cola": 1}
+var wsData = make([]Stresser.SummaryChannel, 0, 10)
+
+func formBaseArray() {
+	for _, _ = range tenants {
+		wsData = append(wsData, singleData)
+	}
+}
 
 func (r *Handler) StreamResults(c echo.Context) error {
 	var upgrader = websocket.Upgrader{CheckOrigin: func(r *http.Request) bool {
@@ -62,7 +68,7 @@ func (r *Handler) StreamResults(c echo.Context) error {
 	}
 	defer ws.Close()
 	var quit bool = false
-
+	formBaseArray()
 	channel := make(chan bool)
 	go func() {
 		for {

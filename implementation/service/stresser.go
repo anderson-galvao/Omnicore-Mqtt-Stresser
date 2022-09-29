@@ -109,9 +109,9 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser, tenant strin
 	// 	return errors.New("Arg Help Not Found")
 	// }
 	tenantTemplate := fmt.Sprintf("tenants/%s", tenant)
-	subscriberClientIdTemplate := tenantTemplate + "/locations/us-central1/registries/KoreWireless/devices/StateManager%d"
+	subscriberClientIdTemplate := tenantTemplate + "/locations/us-central1/registries/KoreWireless/devices/Stresser%d"
 	publisherClientIdTemplate := tenantTemplate + "/locations/us-central1/registries/KoreWireless/devices/Stresser%d"
-	topicNameTemplate := tenantTemplate + "/registries/KoreWirelessStress/devices/Router%d/events"
+	topicNameTemplate := tenantTemplate + "/registries/KoreWireless/devices/Stresser%d/events"
 	argNumClients := Arguments.Clients
 	argNumMessages := Arguments.Messages
 	argConstantPayload := ""

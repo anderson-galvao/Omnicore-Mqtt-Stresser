@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: asia-docker.pkg.dev/gcp-iot-core-361019/iot-core-dev/model-manage
+  repository: asia-docker.pkg.dev/gcp-iot-core-361019/iot-core-dev/mqtt-stresser
   
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -39,8 +39,8 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 metadata:
-  app: model-manage
-  name: model-manage
+  app: mqtt-stresser
+  name: mqtt-stresser
   namespace: default
 
 service:

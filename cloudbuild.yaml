@@ -12,22 +12,22 @@ steps:
 #   - -no-fail #don't fail the build
 #   - ./...  
 
-- id: 'Sonarqube Quality Check'
-  name: "asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/sonar-scanner"
-  args: 
-    - "-Dsonar.host.url=https://sonarqube.cloud.korewireless.com"
-    - "-Dsonar.login=a902b22d7e41d5b9ec9e983c6e17cde783053e4d"
-    - "-Dsonar.projectKey=GCP-model-management"
-    - "-Dsonar.sources=."
+# - id: 'Sonarqube Quality Check'
+#   name: "asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/sonar-scanner"
+#   args: 
+#     - "-Dsonar.host.url=https://sonarqube.cloud.korewireless.com"
+#     - "-Dsonar.login=a902b22d7e41d5b9ec9e983c6e17cde783053e4d"
+#     - "-Dsonar.projectKey=GCP-model-management"
+#     - "-Dsonar.sources=."
   
 - id: 'Docker Build'
   name: gcr.io/cloud-builders/docker
   args: [
     'build', 
     '-t', 
-    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/model-manage:$REVISION_ID',
+    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID',
      '-t',
-     'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/model-manage:latest',
+     'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:latest',
      '.'
    ]
 #dir: 'my-app-vue'
@@ -40,7 +40,7 @@ steps:
   name: gcr.io/cloud-builders/docker
   args: [
     'push', 
-    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/model-manage:$REVISION_ID'
+    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID'
   ]
 # # Step 3
 # - id: 'Deploy to K8s'
@@ -56,10 +56,10 @@ steps:
   args: 
     - upgrade 
     - -i
-    - model-manage
+    - mqtt-stresser
     - --set 
     - image.tag=${REVISION_ID}
-    - ./Helm/model-management
+    - ./Helm/mqtt-stresser
   #dir: 'Helm/model-mgmnt'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1'
@@ -81,5 +81,5 @@ steps:
   ###########
 # Push the image to Google Container Registry with the latest tag
 images: [
-    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/model-manage:$REVISION_ID'
+    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID'
   ]

@@ -13,7 +13,7 @@ func NewIoTtHandler(e *echo.Echo, Usecase model.Usecase) {
 	Handler := &Handler{
 		Usecase: Usecase,
 	}
-
+	formBaseArray()
 	e.POST("/stress", Handler.ExecuteStresser)
 	e.GET("/ws", Handler.StreamResults)
 

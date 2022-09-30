@@ -67,7 +67,7 @@ func (r *Handler) StreamResults(c echo.Context) error {
 	}
 	defer ws.Close()
 	var quit bool = false
-	formBaseArray()
+
 	channel := make(chan bool)
 	go func() {
 		for {

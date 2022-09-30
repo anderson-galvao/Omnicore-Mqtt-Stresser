@@ -246,7 +246,7 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser, tenant strin
 		return err
 	}
 	testCtx, cancelFunc := context.WithTimeout(context.Background(), globalTimeout)
-
+	defer cancelFunc()
 	pauseBetweenMessages, err := time.ParseDuration(argPauseBetweenMessages)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed parse '--pause-between-messages': %q is not a valid duration string. See https://golang.org/pkg/time/#ParseDuration for valid duration strings\n", argPauseBetweenMessages)

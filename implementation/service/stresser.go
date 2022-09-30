@@ -250,7 +250,7 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser, tenant strin
 	pauseBetweenMessages, err := time.ParseDuration(argPauseBetweenMessages)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed parse '--pause-between-messages': %q is not a valid duration string. See https://golang.org/pkg/time/#ParseDuration for valid duration strings\n", argPauseBetweenMessages)
-		
+		return err
 	}
 	stopStartLoop := false
 	for cid := 0; cid < argNumClients && !stopStartLoop; cid++ {
@@ -334,7 +334,7 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser, tenant strin
 
 	summary, err := buildSummary(argNumClients, num, results, tenant)
 	if err != nil {
-		fmt.Println(err.Error())
+		return err
 	} else {
 		printSummary(summary)
 		SummaryChannelData <- summary

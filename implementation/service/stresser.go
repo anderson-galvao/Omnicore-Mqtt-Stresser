@@ -115,8 +115,8 @@ func (d *StresserService) ExecuteStresser(Arguments model.Stresser, tenant strin
 	argNumClients := Arguments.Clients
 	argNumMessages := Arguments.Messages
 	argConstantPayload := ""
-	argTimeout := "20s"
-	argGlobalTimeout := "60s"
+	argTimeout := "50s"
+	argGlobalTimeout := "20s"
 	argRampUpSize := 100
 	argRampUpDelay := "500ms"
 	argBrokerUrl := d.BrokerUrl

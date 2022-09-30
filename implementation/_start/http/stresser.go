@@ -86,7 +86,7 @@ func (r *Handler) StreamResults(c echo.Context) error {
 			quit = true
 		case summary := <-Stresser.SummaryChannelData:
 			id := tenants[summary.Tenant]
-			if wsData[id].SlowestPublishPerformance > summary.PublishPerformance[0] && wsData[id].SlowestPublishPerformance != 0 {
+			if wsData[id].SlowestPublishPerformance > summary.PublishPerformance[0] || wsData[id].SlowestPublishPerformance == 0 {
 				slowestPerformance = summary.PublishPerformance[0]
 			} else {
 				slowestPerformance = wsData[id].SlowestPublishPerformance

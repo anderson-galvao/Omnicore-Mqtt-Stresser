@@ -2,16 +2,15 @@ package http
 
 import (
 	"encoding/json"
-	"math"
-	"net/http"
-	"time"
-
 	Stresser "github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/service"
 	"github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/utils"
 	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
+	"math"
+	"net/http"
+	"time"
 )
 
 // Stress godoc
@@ -45,11 +44,11 @@ func (r *Handler) ExecuteStresser(c echo.Context) error {
 	return nil
 }
 
-var singleData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPublishPerformance: 9999}
+var singleData = Stresser.SummaryChannel{FastestPublishPerformance: 0, SlowestPublishPerformance: 0}
 
 var slowestPerformance float64
 var fastestPerformance float64
-var tenants = map[string]int{"Pepsi": 0, "Cola": 1}
+var tenants = map[string]int{"epsi": 0, "eliance": 1, "ooing": 2}
 var wsData = make([]Stresser.SummaryChannel, 0, 10)
 
 func formBaseArray() {
@@ -87,11 +86,27 @@ func (r *Handler) StreamResults(c echo.Context) error {
 			quit = true
 		case summary := <-Stresser.SummaryChannelData:
 			id := tenants[summary.Tenant]
-			if wsData[id].SlowestPublishPerformance > summary.PublishPerformance[0] {
+			if wsData[id].SlowestPublishPerformance > summary.PublishPerformance[0] && wsData[id].SlowestPublishPerformance != 0 {
 				slowestPerformance = summary.PublishPerformance[0]
+			} else {
+				slowestPerformance = wsData[id].SlowestPublishPerformance
 			}
 			if wsData[id].FastestPublishPerformance < summary.PublishPerformance[len(summary.PublishPerformance)-1] {
 				fastestPerformance = summary.PublishPerformance[len(summary.PublishPerformance)-1]
+			} else {
+				fastestPerformance = wsData[id].FastestPublishPerformance
+			}
+			fastestPerformance = math.Round(fastestPerformance)
+			slowestPerformance = math.Round(slowestPerformance)
+			if slowestPerformance == math.Inf(1) {
+				slowestPerformance = 999999
+			}
+			if fastestPerformance == math.Inf(1) {
+				fastestPerformance = 999999
+			}
+			median := (wsData[id].PublishPerformanceMedian + summary.PublishPerformanceMedian) / 2
+			if median == math.Inf(1) {
+				median = 99999
 			}
 			wsData[id] = Stresser.SummaryChannel{
 				Tenant:                    summary.Tenant,
@@ -106,9 +121,9 @@ func (r *Handler) StreamResults(c echo.Context) error {
 				SubscribeFailed:           wsData[id].SubscribeFailed + summary.SubscribeFailed,
 				TimeoutExceeded:           wsData[id].TimeoutExceeded + summary.TimeoutExceeded,
 				Aborted:                   wsData[id].Aborted + summary.Aborted,
-				FastestPublishPerformance: math.Round(fastestPerformance),
-				SlowestPublishPerformance: math.Round(slowestPerformance),
-				PublishPerformanceMedian:  (wsData[id].PublishPerformanceMedian + summary.PublishPerformanceMedian) / 2,
+				FastestPublishPerformance: fastestPerformance,
+				SlowestPublishPerformance: slowestPerformance,
+				PublishPerformanceMedian:  median,
 			}
 
 		}

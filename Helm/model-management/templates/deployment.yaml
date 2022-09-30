@@ -30,7 +30,7 @@ spec:
           value: ":8091"
         - name: ENV_DEBUG
           value: "true"
-        - name: ENV_POSTGRES_CS
-          value: "user=postgres dbname=iot-core-dev password=iot-core-dev host=34.81.43.98 sslmode=disable"
+        - name: ENV_BROKER_URL
+          value: "tcp://dev-vernemq.cloud.korewireless.com:1883"
         
 

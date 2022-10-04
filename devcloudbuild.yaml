@@ -1,0 +1,59 @@
+steps:
+# - id: 'GoSec Security Checks'
+#   name: "securego/gosec"
+#   args: 
+#   - -no-fail       #don't fail the build in this step
+#   - ./... 
+
+# - id: 'Sonarqube Quality Check'
+#   name: "asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/sonar-scanner"
+#   args: 
+#     - "-Dsonar.host.url=https://sonarqube.cloud.korewireless.com"
+#     - "-Dsonar.login=a902b22d7e41d5b9ec9e983c6e17cde783053e4d"
+#     - "-Dsonar.projectKey=GCP-model-management"
+#     - "-Dsonar.sources=."
+  
+- id: 'Docker Build'
+  name: gcr.io/cloud-builders/docker
+  args: [
+    'build', 
+    '-t', 
+    'asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID',
+     '-t',
+     'asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:latest',
+     '.'
+   ]
+
+# - id: 'Trivy Vulnerability Scan'
+#   name: 'asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/trivy'
+#   args: [''image',asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID']
+
+- id: 'Push to Google ACR'
+  name: gcr.io/cloud-builders/docker
+  args: [
+    'push', 
+    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID'
+  ]
+  
+- id: 'Helm Deploy'
+  name: 'asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/helm'
+  args: 
+    - upgrade 
+    - -i
+    - iot-gw-mqtt-stresser
+    - -n
+    - iot-core
+    - --set
+    - image.repository=asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser
+    - --set 
+    - image.tag=${REVISION_ID}
+    - --set
+    - serviceAccountName=iot-core-ksa
+    - ./Helm/mqtt-stresser
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=iot-core'
+  
+images: [
+    'asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID'
+  ]

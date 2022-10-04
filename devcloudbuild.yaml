@@ -32,7 +32,7 @@ steps:
   name: gcr.io/cloud-builders/docker
   args: [
     'push', 
-    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID'
+    'asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID'
   ]
   
 - id: 'Helm Deploy'

@@ -1,17 +1,17 @@
 steps:
-# - id: 'GoSec Security Checks'
-#   name: "securego/gosec"
-#   args: 
-#   - -no-fail       #don't fail the build in this step
-#   - ./... 
+- id: 'GoSec Security Checks'
+  name: "securego/gosec"
+  args: 
+  - -no-fail       #don't fail the build in this step
+  - ./... 
 
-# - id: 'Sonarqube Quality Check'
-#   name: "asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/sonar-scanner"
-#   args: 
-#     - "-Dsonar.host.url=https://sonarqube.cloud.korewireless.com"
-#     - "-Dsonar.login=a902b22d7e41d5b9ec9e983c6e17cde783053e4d"
-#     - "-Dsonar.projectKey=GCP-model-management"
-#     - "-Dsonar.sources=."
+- id: 'Sonarqube Quality Check'
+  name: "asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/sonar-scanner"
+  args: 
+    - "-Dsonar.host.url=https://sonarqube.cloud.korewireless.com"
+    - "-Dsonar.login=a902b22d7e41d5b9ec9e983c6e17cde783053e4d"
+    - "-Dsonar.projectKey=GCP-model-management"
+    - "-Dsonar.sources=."
   
 - id: 'Docker Build'
   name: gcr.io/cloud-builders/docker
@@ -24,9 +24,9 @@ steps:
      '.'
    ]
 
-# - id: 'Trivy Vulnerability Scan'
-#   name: 'asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/trivy'
-#   args: [''image',asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID']
+- id: 'Trivy Vulnerability Scan'
+  name: 'asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/trivy'
+  args: [''image',asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID']
 
 - id: 'Push to Google ACR'
   name: gcr.io/cloud-builders/docker

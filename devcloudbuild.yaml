@@ -26,7 +26,7 @@ steps:
 
 - id: 'Trivy Vulnerability Scan'
   name: 'asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/trivy'
-  args: ['image',asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID']
+  args: ['image','asia-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID']
 
 - id: 'Push to Google ACR'
   name: gcr.io/cloud-builders/docker

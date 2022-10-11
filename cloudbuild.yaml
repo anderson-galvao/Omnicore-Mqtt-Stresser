@@ -17,7 +17,7 @@ steps:
 #   args: 
 #     - "-Dsonar.host.url=https://sonarqube.cloud.korewireless.com"
 #     - "-Dsonar.login=a902b22d7e41d5b9ec9e983c6e17cde783053e4d"
-#     - "-Dsonar.projectKey=GCP-model-management"
+#     - "-Dsonar.projectKey=GCP-mqtt-stresser"
 #     - "-Dsonar.sources=."
   
 - id: 'Docker Build'

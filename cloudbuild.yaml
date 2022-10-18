@@ -13,7 +13,7 @@ steps:
 #   - ./...  
 
 # - id: 'Sonarqube Quality Check'
-#   name: "asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/sonar-scanner"
+#   name: "us-central1-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/sonar-scanner"
 #   args: 
 #     - "-Dsonar.host.url=https://sonarqube.cloud.korewireless.com"
 #     - "-Dsonar.login=a902b22d7e41d5b9ec9e983c6e17cde783053e4d"
@@ -25,22 +25,22 @@ steps:
   args: [
     'build', 
     '-t', 
-    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID',
+    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID',
      '-t',
-     'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:latest',
+     'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:latest',
      '.'
    ]
 #dir: 'my-app-vue'
 
 # - id: 'Trivy Vulnerability Scan'
-#   name: 'asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/trivy'
-#   args: ['asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/model-manage:$REVISION_ID']
+#   name: 'us-central1-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/trivy'
+#   args: ['us-central1-docker.pkg.dev/$PROJECT_ID/iot-core-dev/model-manage:$REVISION_ID']
 
 - id: 'Push to Google ACR'
   name: gcr.io/cloud-builders/docker
   args: [
     'push', 
-    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID'
+    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID'
   ]
 # # Step 3
 # - id: 'Deploy to K8s'
@@ -52,7 +52,7 @@ steps:
 #   - 'CLOUDSDK_CONTAINER_CLUSTER=device-manager'
   
 - id: 'Helm Deploy'
-  name: 'asia-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/helm'
+  name: 'us-central1-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/helm'
   args: 
     - upgrade 
     - -i
@@ -81,5 +81,5 @@ steps:
   ###########
 # Push the image to Google Container Registry with the latest tag
 images: [
-    'asia-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID'
+    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core-dev/mqtt-stresser:$REVISION_ID'
   ]

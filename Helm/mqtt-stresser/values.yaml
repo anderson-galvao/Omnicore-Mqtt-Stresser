@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: asia-docker.pkg.dev/gcp-iot-core-361019/iot-core-dev/mqtt-stresser
+  repository: us-central1-docker.pkg.dev/gcp-iot-core-361019/iot-core-dev/mqtt-stresser
   
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.

@@ -1,0 +1,22 @@
+steps:
+- id: 'Docker Build'
+  name: gcr.io/cloud-builders/docker
+  args: [
+    'build', 
+    '-t', 
+    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID',
+     '-t',
+     'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:latest',
+     '.'
+   ]
+   
+- id: 'Push to Google ACR'
+  name: gcr.io/cloud-builders/docker
+  args: [
+    'push', 
+    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID'
+  ]
+  
+images: [
+    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID'
+  ]

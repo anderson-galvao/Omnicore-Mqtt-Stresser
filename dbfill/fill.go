@@ -11,8 +11,7 @@ import (
 func main() {
 	connStr := "user=postgres dbname=iot_core_dev password=iot-core-dev host=104.199.209.231 sslmode=disable"
 
-	tenant := "KoreWireless"
-	region := "us-central1"
+	subscription := "KoreWireless"
 	device := "Stresser"
 	registry := "KoreWireless"
 	entries := 100
@@ -26,8 +25,8 @@ func main() {
 		panic(err)
 	}
 	sqlStatement := `INSERT INTO public."Device" (
-	tenant, region, parent, devicename, fullname, loglevel, blocked, numid, registry, capresent, createdon,updatedon, metadata, credentials) VALUES (
-		$1::character varying, $2::character varying, $3::character varying, $4::character varying, $5::character varying, 'info'::character varying, false::boolean, $6, $7::character varying, true::boolean, CURRENT_TIMESTAMP,CURRENT_TIMESTAMP, '{}'::json, '[
+	subscription , parent, devicename, fullname, loglevel, blocked, numid, registry, capresent, createdon,updatedon, metadata, credentials) VALUES (
+		$1::character varying, $2::character varying, $3::character varying, $4::character varying, 'info'::character varying, false::boolean, $5, $6::character varying, true::boolean, CURRENT_TIMESTAMP,CURRENT_TIMESTAMP, '{}'::json, '[
 				{
 				"id":"1",
 				"publicKey": {
@@ -39,10 +38,10 @@ func main() {
 			]'::json) ON CONFLICT DO NOTHING`
 
 	for i := 0; i < entries; i++ {
-		d3 := fmt.Sprintf("tenants/%s/locations/%s/registries/%s/devices", tenant, region, registry)
+		d3 := fmt.Sprintf("subscriptions/%s/registries/%s/devices", subscription, registry)
 		devId := fmt.Sprintf("%s%d", device, i)
 		d5 := fmt.Sprintf("%s/%s", d3, devId)
-		_, err = db.Exec(sqlStatement, tenant, region, d3, devId, d5, i+500, registry)
+		_, err = db.Exec(sqlStatement, subscription, d3, devId, d5, i+500, registry)
 		if err != nil {
 			panic(err)
 		}

@@ -6,7 +6,7 @@ steps:
   - ./... 
 
 - id: 'Sonarqube Quality Check'
-  name: "us-central1-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/sonar-scanner"
+  name: "us-central1-docker.pkg.dev/$PROJECT_ID/omnicore-infra-addons/sonar-scanner"
   args: 
     - "-Dsonar.host.url=https://sonarqube.cloud.korewireless.com"
     - "-Dsonar.login=a902b22d7e41d5b9ec9e983c6e17cde783053e4d"
@@ -25,7 +25,7 @@ steps:
    ]
 
 - id: 'Trivy Vulnerability Scan'
-  name: 'us-central1-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/trivy'
+  name: 'us-central1-docker.pkg.dev/$PROJECT_ID/omnicore-infra-addons/trivy'
   args: ['image','us-central1-docker.pkg.dev/$PROJECT_ID/omnicore-infra/mqtt-stresser:$REVISION_ID']
 
 - id: 'Push to Google ACR'

@@ -6,6 +6,7 @@ import (
 	"crypto/x509"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
 	"sync/atomic"
@@ -17,6 +18,11 @@ import (
 var messageId uint64
 
 type PayloadGenerator func(i int) string
+
+func GenerateMessageBaseValue() {
+	rand.Seed(time.Now().UnixMicro())
+	messageId = randomSource.Uint64()
+}
 
 func defaultPayloadGen() PayloadGenerator {
 	return func(i int) string {
@@ -197,7 +203,7 @@ func (w *Worker) Run(ctx context.Context) {
 
 	t0 := time.Now()
 	for i := 0; i < w.NumberOfMessages; i++ {
-		text := fmt.Sprintf("{\"id\":%d,\"time\":%d}", messageId, time.Now().UTC().Unix())
+		text := fmt.Sprintf("{\"id\":%d,\"time\":%d}", messageId, time.Now().UTC().UnixMilli())
 		atomic.AddUint64(&messageId, 1)
 		token := publisher.Publish(topicName, w.PublisherQoS, w.Retained, text)
 		published := token.WaitTimeout(w.Timeout)

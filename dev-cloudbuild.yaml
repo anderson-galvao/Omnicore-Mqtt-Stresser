@@ -18,22 +18,22 @@ steps:
   args: [
     'build', 
     '-t', 
-    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID',
+    'us-central1-docker.pkg.dev/$PROJECT_ID/omnicore-infra/mqtt-stresser:$REVISION_ID',
      '-t',
-     'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:latest',
+     'us-central1-docker.pkg.dev/$PROJECT_ID/omnicore-infra/mqtt-stresser:latest',
      '.'
    ]
 
 - id: 'Trivy Vulnerability Scan'
   name: 'us-central1-docker.pkg.dev/$PROJECT_ID/iot-infra-addons/trivy'
-  args: ['image','us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID']
+  args: ['image','us-central1-docker.pkg.dev/$PROJECT_ID/omnicore-infra/mqtt-stresser:$REVISION_ID']
 
 - id: 'Push to Google ACR'
   name: gcr.io/cloud-builders/docker
   args: [
     'push', 
-    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID'
+    'us-central1-docker.pkg.dev/$PROJECT_ID/omnicore-infra/mqtt-stresser:$REVISION_ID'
   ]
 images: [
-    'us-central1-docker.pkg.dev/$PROJECT_ID/iot-core/mqtt-stresser:$REVISION_ID'
+    'us-central1-docker.pkg.dev/$PROJECT_ID/omnicore-infra/mqtt-stresser:$REVISION_ID'
   ]

@@ -11,9 +11,9 @@ import (
 func main() {
 	connStr := "user=postgres dbname=iot_core_demo password=iotcore22!@bx#m host=10.56.48.2 sslmode=disable"
 
-	subscription := "KoreWireless"
+	subscription := "epsi-production"
 	device := "Stresser"
-	registry := "KoreWireless"
+	registry := "Stresser"
 	entries := 100
 
 	db, err := sql.Open("postgres", connStr)

@@ -85,7 +85,7 @@ func NewTLSConfig(ca, certificate, privkey []byte) (*tls.Config, error) {
 	}
 
 	// Import client certificate/key pair
-	cert, err := tls.X509KeyPair(certificate, privkey)
+	_, err := tls.X509KeyPair(certificate, privkey)
 	if err != nil {
 		return nil, err
 	}
@@ -104,7 +104,8 @@ func NewTLSConfig(ca, certificate, privkey []byte) (*tls.Config, error) {
 		// match server. IP matches what is in cert etc.
 		InsecureSkipVerify: false,
 		// Certificates = list of certs client sends to server.
-		Certificates: []tls.Certificate{cert},
+		//Certificates: []tls.Certificate{cert},
+		Certificates: nil,
 	}, nil
 }
 
@@ -139,7 +140,6 @@ func (w *Worker) Run(ctx context.Context) {
 		if err != nil {
 			panic(err)
 		}
-		subscriberOptions.SetTLSConfig(tlsConfig)
 		publisherOptions.SetTLSConfig(tlsConfig)
 	}
 

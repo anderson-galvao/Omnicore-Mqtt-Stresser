@@ -6,7 +6,6 @@ import (
 	"crypto/x509"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"math/rand"
 	"os"
 	"strings"
@@ -77,11 +76,9 @@ func setSkipTLS(o *mqtt.ClientOptions) {
 }
 func NewTlsConfig2() *tls.Config {
 	certpool := x509.NewCertPool()
-	ca, err := ioutil.ReadFile("Certificates/domain.pem")
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
-	certpool.AppendCertsFromPEM(ca)
+	ca := "-----BEGIN CERTIFICATE-----\nMIIDXDCCAkSgAwIBAgITBcMGZIDrc0uW9GCK0Q8YrfBRgjANBgkqhkiG9w0BAQsF\nADA2MRkwFwYDVQQKExBrb3Jld2lyZWxlc3MuY29tMRkwFwYDVQQDExBrb3Jld2ly\nZWxlc3MuY29tMB4XDTIyMDkyMjEzMjAwOFoXDTMyMDkxOTEzMjAwN1owNjEZMBcG\nA1UEChMQa29yZXdpcmVsZXNzLmNvbTEZMBcGA1UEAxMQa29yZXdpcmVsZXNzLmNv\nbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIzyuJG1lqM38Q9uGaEI\nm+15LHqcl9HWvxxOpuJxVB4+p9mcQiGqXf4K8Oyz5VGrFMNtZ1qC4jwrBJq6qZwx\nv/i37JFEHOpwbFEEz8zeSxIG3OCGsD1fnafwjD+kVP+ObaI6oN7cqEtRgbPDu/Qz\nW9eH//6o11H2q/CVXgiDlLTOqQjPNefoqmwy//xDzUV5nfBs21h/c2VFHwkPgJbo\n6CvFgdmi25JS4nQnB8qNlhilzuRfjwxUSjeMuuaGSxLmojCgTFrkCOokjAGs7KzU\n6vKT7juRMk0QA8V6/7Clum+p5pEKXdBxtdQ3KJrWUqENOi62VCQvu6gtTSfpSnV0\n5hUCAwEAAaNjMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYD\nVR0OBBYEFNnVdulRaYA5kosaQuZOHQH98CEZMB8GA1UdIwQYMBaAFNnVdulRaYA5\nkosaQuZOHQH98CEZMA0GCSqGSIb3DQEBCwUAA4IBAQB09XZmi3HTifsfF2OMOupo\nlKxys5LRULGDBVjvwEd+6PjWP0yXRC2bcfITPN3dkZF/VJsGtZZVFslOpkErQQhs\nkh8+uZ9UcmqKhwi49UcFOksRMl37o7f0Wp9o71AsOIybBoMe8BDWLojgYMUjgJym\nIIrHa0Xer+n33KYLBmPplfWSmrD7KBS+Gejg7fuVa3EjfniX4/oVeW1OOxsNWBF5\n0GMxt8P73j8VWXuO1f068MdwrZsIVxPo6+NpnU4R5JtsgYsR+zNj/GKJLg0M2EQ8\nJ4GJmao7FCScH1j6nMP1BliDJEKtfxD2QhwPX2FFZHOgRwBombmF/BymBtyWRjAn\n-----END CERTIFICATE-----\n"
+	bytesCa := []byte(ca)
+	certpool.AppendCertsFromPEM(bytesCa)
 	return &tls.Config{
 		RootCAs: certpool,
 	}

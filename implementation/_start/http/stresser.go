@@ -2,9 +2,9 @@ package http
 
 import (
 	"encoding/json"
-	Stresser "github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/service"
-	"github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/utils"
-	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
+	Stresser "github.com/RacoWireless/Omnicore-Mqtt-Stresser/implementation/service"
+	"github.com/RacoWireless/Omnicore-Mqtt-Stresser/implementation/utils"
+	"github.com/RacoWireless/Omnicore-Mqtt-Stresser/model"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"

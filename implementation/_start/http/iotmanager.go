@@ -1,7 +1,7 @@
 package http
 
 import (
-	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
+	"github.com/RacoWireless/Omnicore-Mqtt-Stresser/model"
 	"github.com/labstack/echo/v4"
 )
 

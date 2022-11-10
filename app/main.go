@@ -11,9 +11,9 @@ import (
 	"github.com/go-playground/validator"
 	"github.com/ztrue/shutdown"
 
-	iotDelivery "github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/_start/http"
-	iotService "github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/service"
-	iotUsecase "github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/usecase"
+	iotDelivery "github.com/RacoWireless/Omnicore-Mqtt-Stresser/implementation/_start/http"
+	iotService "github.com/RacoWireless/Omnicore-Mqtt-Stresser/implementation/service"
+	iotUsecase "github.com/RacoWireless/Omnicore-Mqtt-Stresser/implementation/usecase"
 
 	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"

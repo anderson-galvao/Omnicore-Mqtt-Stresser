@@ -14,7 +14,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
+	"github.com/RacoWireless/Omnicore-Mqtt-Stresser/model"
 )
 
 var (

@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
+	"github.com/RacoWireless/Omnicore-Mqtt-Stresser/model"
 )
 
 func FrameGenericResponse(statusCode int, msg string, details string) model.Response {

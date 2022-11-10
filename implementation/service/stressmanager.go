@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
+	"github.com/RacoWireless/Omnicore-Mqtt-Stresser/model"
 )
 
 type StresserService struct {

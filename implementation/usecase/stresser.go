@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"github.com/RacoWireless/iot-gw-mqtt-stresser/implementation/utils"
-	"github.com/RacoWireless/iot-gw-mqtt-stresser/model"
+	"github.com/RacoWireless/Omnicore-Mqtt-Stresser/implementation/utils"
+	"github.com/RacoWireless/Omnicore-Mqtt-Stresser/model"
 )
 
 func (i *Usecase) ExecuteStresser(Arguments model.Stresser) (dr model.Response, err error) {

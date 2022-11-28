@@ -20,7 +20,7 @@ var messageId uint64
 type PayloadGenerator func(i int) string
 
 func GenerateMessageBaseValue() {
-	rand.Seed(time.Now().UnixMicro())
+	rand.Seed(time.Now().Unix())
 	messageId = randomSource.Uint64()
 }
 
@@ -211,7 +211,7 @@ func (w *Worker) Run(ctx context.Context) {
 
 	t0 := time.Now()
 	for i := 0; i < w.NumberOfMessages; i++ {
-		text := fmt.Sprintf("{\"id\":%d,\"time\":%d}", messageId, time.Now().UTC().UnixMilli())
+		text := fmt.Sprintf("{\"id\":%d,\"time\":%d}", messageId, time.Now().UTC().Unix())
 		atomic.AddUint64(&messageId, 1)
 		token := publisher.Publish(topicName, w.PublisherQoS, w.Retained, text)
 		published := token.WaitTimeout(w.Timeout)

@@ -126,7 +126,7 @@ func loadTLSFile(fileName string) ([]byte, error) {
 
 func main() {
 	flag.Parse()
-	log.Print(time.Now().UTC().UnixMicro())
+	log.Print(time.Now().UTC().Unix())
 	subscriberClientIdTemplate = fmt.Sprintf("subscriptions/%s/registries/Stresser/devices/StateManager", *argSubscriptionName) + "%d"
 	publisherClientIdTemplate = fmt.Sprintf("subscriptions/%s/registries/Stresser/devices/Stresser", *argSubscriptionName) + "%d"
 	topicNameTemplate = fmt.Sprintf("subscriptions/%s/registries/Stresser/devices/Stresser", *argSubscriptionName) + "%d/events"
@@ -360,6 +360,6 @@ func main() {
 	}
 
 	pprof.StopCPUProfile()
-	log.Print(time.Now().UTC().UnixMicro())
+	log.Print(time.Now().UTC().Unix())
 	os.Exit(exitCode)
 }

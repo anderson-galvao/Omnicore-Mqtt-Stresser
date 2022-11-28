@@ -129,7 +129,7 @@ func main() {
 	log.Print(time.Now().UTC().Unix())
 	subscriberClientIdTemplate = fmt.Sprintf("subscriptions/%s/registries/Stresser/devices/StateManager", *argSubscriptionName) + "%d"
 	publisherClientIdTemplate = fmt.Sprintf("subscriptions/%s/registries/Stresser/devices/Stresser", *argSubscriptionName) + "%d"
-	topicNameTemplate = fmt.Sprintf("subscriptions/%s/registries/Stresser/devices/Stresser", *argSubscriptionName) + "%d/events"
+	topicNameTemplate = "devices/Stresser%d/events"
 
 	if flag.NFlag() < 1 || *argHelp {
 		flag.Usage()

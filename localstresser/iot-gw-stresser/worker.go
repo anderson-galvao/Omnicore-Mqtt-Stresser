@@ -20,7 +20,7 @@ var messageId uint64
 type PayloadGenerator func(i int) string
 
 func GenerateMessageBaseValue() {
-	rand.Seed(time.Now().Unix())
+	rand.Seed(time.Now().UnixMicro())
 	messageId = randomSource.Uint64()
 }
 

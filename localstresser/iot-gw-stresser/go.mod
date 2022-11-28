@@ -1,6 +1,6 @@
 module github.com/inovex/mqtt-stresser
 
-go 1.12
+go 1.15
 
 require (
 	github.com/eclipse/paho.mqtt.golang v1.2.0
